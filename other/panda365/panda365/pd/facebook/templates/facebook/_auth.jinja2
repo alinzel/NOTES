@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <title>Facebook Login Demo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId: '{{ config["FACEBOOK_APP_ID"] }}',
+          xfbml: true,
+          cookie: true,
+          status: true,
+          version: 'v2.8'
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+  </head>
+  <body>
+    <div>
+      {% if user %}
+        <p>User logged-in</p>
+        <image src="https://graph.facebook.com/{{ user['uid'] }}/picture"></image>
+        {% for k, v in user.items() %}
+        <pre>{{ k }}: {{ v }}</pre>
+        {% endfor %}
+        <button id="logout">Logout</button>
+        <div id="jwt">
+          <h3>Fetch JWT Token For the API</h3>
+          <button>Get Token</button>
+          <pre></pre>
+        </div>
+      {% else %}
+        <p>User is not logged-in</p>
+        <button id="login">Login</button>
+      {% endif %}
+    </div>
+
+    <script>
+      $(function() {
+        $("#login").click(function (e) {
+          e.preventDefault();
+          FB.login(function (resp) {
+            if (resp.authResponse) {
+              console.log('login success: ' + resp.authResponse.userID);
+              window.location.reload();
+            }
+          });
+        });
+
+        $("#logout").click(function (e) {
+          e.preventDefault();
+          $.cookie('fbsr_{{ config.FACEBOOK_APP_ID }}', '', {path: '/'});
+          window.location.reload();
+        })
+
+        {% if user %}
+        $("#jwt>button").click(function (e) {
+          e.preventDefault()
+          $.post('/v1/auth/tokens/', {
+            fb_token: '{{ user.access_token }}'
+          }).then(function (data) {
+            $("#jwt>pre").text(data.jwt_token);
+          }).fail(function (err) {
+            $("#jwt>pre").text(err);
+          })
+        })
+        {% endif %}
+      })
+    </script>
+  </body>
+</html>

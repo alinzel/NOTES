@@ -1,0 +1,214 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--<meta charset="UTF-8">-->
+<!--<title>Title</title>-->
+<!--<style>-->
+<!--body {-->
+<!--background: black;-->
+<!--padding: 20px;-->
+<!--}-->
+
+<!--marquee {-->
+<!--font-weight: bolder;-->
+<!--font-size: 40px;-->
+<!--color: white;-->
+<!--}-->
+<!--&lt;!&ndash;body{&ndash;&gt;-->
+<!--&lt;!&ndash;background:#f0f0f0;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--.img_celebrity_avatar{-->
+<!--width:80px;-->
+<!--height:80px;-->
+<!--vertical-align:middle;-->
+<!--float:left;-->
+<!--#border:1px solid green;-->
+<!--}-->
+
+<!--.div_celebrity_row{-->
+<!--width:300px;-->
+<!--height:80px;-->
+<!--margin:8px;-->
+<!--background:#eee;-->
+<!--border:3px solid white;-->
+<!--box-shadow: 5px 5px 5px #888888;-->
+<!--}-->
+
+<!--.div_celebrity_list{-->
+<!--width:350px;-->
+<!--height:300px;-->
+<!--overflow-y:scroll;-->
+<!--padding:4px;-->
+<!--border:2px dashed #aaa;-->
+<!--}-->
+
+<!--.ul_celebrity_info{-->
+<!--margin:0;padding:0;-->
+<!--#border:1px solid red;-->
+<!--list-style:none;-->
+<!--}-->
+<!--.div_celebrity_info{-->
+<!--float:left;-->
+<!--width:150px;-->
+<!--margin-top:25px;-->
+<!--margin-left:25px;-->
+<!--#border:1px solid red;-->
+<!--}-->
+<!--</style>-->
+
+<!--<script src="jquery-1.4.2.min.js"></script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div style="width: 100%; height: 80px; background-color: grey">-->
+<!--<h1 style="margin-left: 10%; line-height: 40px; float: left">logo-&#45;&#45;大标题</h1>-->
+<!--<input type="text" style="margin-left: 50px; margin-top: 30px; width: 30%" >-->
+<!--</div>-->
+
+
+<!--<div class="div_celebrity_list">-->
+<!--<div class='div_celebrity_row'>-->
+<!--<div style='float'>-->
+<!--<img class='img_celebrity_avatar' src='http://pic62.nipic.com/file/20150329/2531170_103550104000_2.jpg'/>-->
+<!--</div>-->
+<!--<div class='div_celebrity_info'>-->
+<!--<ul class='ul_celebrity_info'>-->
+<!--<li>天气</li>-->
+<!--<li>22</li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<div class='div_celebrity_row'>-->
+<!--<div style='float' > <img class='img_celebrity_avatar' src='http://131225.vip602.cn/news/20151207/540228afc07f45b389ebdf01edc5c517.png'/> </div>-->
+<!--<div class='div_celebrity_info'>-->
+<!--<ul class='ul_celebrity_info'>-->
+<!--<li>美食 </li>-->
+<!--<li>33 </li>-->
+<!--</ul>-->
+<!--</div>-->
+
+<!--</div>-->
+
+<!--<div class='div_celebrity_row'>-->
+<!--<div style='float' > <img class='img_celebrity_avatar' src='http://pic.58pic.com/10/81/55/53bOOOPIC43.jpg'/> </div>-->
+<!--<div class='div_celebrity_info'>-->
+<!--<ul class='ul_celebrity_info'>-->
+<!--<li>运动 </li>-->
+<!--<li>444 </li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<div class='div_celebrity_row'>-->
+<!--<div style='float' > <img class='img_celebrity_avatar' src='http://img.zcool.cn/community/016cd3565d430232f8759647cebcd2.png'/> </div>-->
+<!--<div class='div_celebrity_info'>-->
+<!--<ul class='ul_celebrity_info'>-->
+<!--<li>宠物 </li>-->
+<!--<li>444 </li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--&lt;!&ndash;TODO 已废弃&ndash;&gt;-->
+<!--<marquee loop="2">Welcom CSDN!</marquee>-->
+
+<!--<marquee direction="up">UP</marquee>-->
+<!--<marquee direction="down">DOWN</marquee>-->
+<!--<marquee direction="left">LEFT</marquee>-->
+<!--<marquee direction="right">RIGHT</marquee>-->
+
+
+<!--</body>-->
+<!--</html>-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="//www.jb51.net/"/>
+    <title>文字列表无缝向上滚动代码</title>
+    <style type="text/css">
+<!--*{-->
+margin:0px;
+padding:0px;
+border:0px;
+}
+body{font-size:17px}
+#demo{
+overflow:hidden;
+height:280px;
+width:500px;
+margin:90px auto;
+<!--position:relative;-->
+}
+#demo1{
+height:auto;
+text-align:left;
+margin-bottom:0;
+}
+#demo2{
+height:auto;
+text-align:left;
+
+}
+#demo1 li{
+list-style-type:none;
+<!--height:22px;-->
+text-align:left;
+text-indent:15px;
+margin-bottom:5px;
+}
+#demo2 li{
+list-style-type:none;
+<!--height:22px;-->
+text-align:left;
+text-indent:15px;
+margin-bottom:5px;
+}
+
+
+    </style>
+    <script type="text/javascript">
+var speed=100
+window.onload=function(){
+var demo=document.getElementById("demo");
+var demo2=document.getElementById("demo2");
+var demo1=document.getElementById("demo1");
+demo2.innerHTML=demo1.innerHTML
+function Marquee(){
+console.log(demo.scrollTop +"-----")
+console.log(demo1.offsetHeight +"+++++++")
+if(demo.scrollTop>=demo1.offsetHeight){
+demo.scrollTop=-1;
+}
+else{
+demo.scrollTop=demo.scrollTop+1;
+}
+}
+var MyMar=setInterval(Marquee,speed)
+demo.onmouseover=function(){clearInterval(MyMar)}
+demo.onmouseout=function(){MyMar=setInterval(Marquee,speed)}
+}
+
+    </script>
+</head>
+<body>
+<div id="demo">
+    <ul id="demo1">
+        <li><a href="#" target="_blank">脚本之家欢迎您的到来脚本之家欢迎您的到来脚本之家欢迎您的到来脚本之家欢迎您的到来</a></li>
+        <li><a href="#" target="_blank">只有努力才会有美好的明天</a></li>
+        <li><a href="#" target="_blank">没有人一开始就是高手，都是从菜鸟开始</a></li>
+        <li><a href="#" target="_blank">每一天都是新的需要好好珍惜</a></li>
+        <li><a href="#" target="_blank">怨天尤人是没有任何作用的</a></li>
+        <li><a href="#" target="_blank">今天你写代码了吗</a></li>
+        <li><a href="#" target="_blank">分享的胸怀和互助的精神最终成就了你</a></li>
+        <li><a href="#" target="_blank">只有努力才会有美好的明天</a></li>
+        <li><a href="#" target="_blank">没有人一开始就是高手，都是从菜鸟开始</a></li>
+        <li><a href="#" target="_blank">每一天都是新的需要好好珍惜</a></li>
+    </ul>
+    <div id="demo2"></div>
+</div>
+</body>
+</html>

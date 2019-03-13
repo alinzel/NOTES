@@ -1,0 +1,167 @@
+# Indonesian translations for panda365.
+# Copyright (C) 2017 ORGANIZATION
+# This file is distributed under the same license as the panda365 project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: panda365 VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2017-07-31 16:08+0800\n"
+"PO-Revision-Date: 2017-06-27 12:26+0800\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: id\n"
+"Language-Team: id <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.4.0\n"
+
+msgid "Not a valid datetime value"
+msgstr ""
+
+msgid "locale"
+msgstr ""
+
+msgid "content"
+msgstr ""
+
+msgid "translation for each locale can only be given once"
+msgstr ""
+
+msgid "payment_pending"
+msgstr ""
+
+msgid "payment_processing"
+msgstr ""
+
+msgid "payment_failed"
+msgstr ""
+
+msgid "paid"
+msgstr ""
+
+msgid "proccessing"
+msgstr ""
+
+msgid "shipped"
+msgstr ""
+
+msgid "canceled"
+msgstr ""
+
+msgid "1.What is goup buy?"
+msgstr "1.Apa itu pembelian kumpulan ?"
+
+msgid "Goup buy is an activity that multiple people place orders together to get a lower discount than normal online shopping for a spcific product."
+msgstr "Patungan adalah aktivitas banyak orang memesan produk bersama untuk dapat diskon pada produk tertentu"
+
+msgid "2. How to buy?"
+msgstr "2.Bagaimana membeli?"
+
+msgid "1. Select the product, click \"buy\" and then select the specification."
+msgstr "Pilih produk dan lakukan pembayaran. Itu akan komplit ketika jumlah pembeli mencapai jumlah yang telah ditentukan"
+
+msgid "2. Fill your delivery address."
+msgstr "2. Isi alamat pengirimanmu"
+
+msgid "3. Select payment methord and finish payment for your order."
+msgstr " 3. Pilih metode pembayaran dan selesaikan pembayaran atas pesananmu."
+
+msgid "4. Waiting for other buyers to attend the acitivity."
+msgstr " 4. Menunggu pembeli lain untuk menghadiri aktivitasmu"
+
+msgid ""
+"5. The group buy will be completed when the number of buyers reach the required number within a limited\n"
+"            time."
+msgstr "5. Patungan akan komplit ketika jumlah pembeli mencapai jumlah yang ditentukan dalam batas waktu tertentu"
+
+msgid "3. What is a successful goup buy?"
+msgstr "Wow Produk yang bagus! Bagi itu untuk pemesanan jika kamu benar-benar suka"
+
+msgid ""
+"You will enjoy the goup buy price within a limit time. The goup buy will be\n"
+"            complete when the number of buyers reach the required number."
+msgstr "Kamu akan menikmati harga patungan dalam batasan waktu. Patungan akan komplit ketikan jumlah pembeli mencapai batas jumlah yang ditentukan."
+
+msgid "4. How to refund if the goup buy failed?"
+msgstr "Bagaiman pengembalian dana jika patungan gagal."
+
+msgid ""
+"The goup buy will be failed if the number of buyers didn't reach the required\n"
+"            number within the specific time, the customer service will contact you to refund for you."
+msgstr "Patungan gagal jika jumlah pembeli tidak mencapai jumlah yang sudah ditentukan dalam batas waktu tertentu, CS akan menghubungi kamu untuk mengembalikan dana kamu"
+
+msgid "Panda365 - Group Buy, Lower Price Shopping"
+msgstr "Ini cukup murah dan saya ingin membelinya, maukan?"
+
+msgid "Goup-buy price"
+msgstr "Harga patungan"
+
+#, python-format
+msgid "%(num)s sold"
+msgstr "Terjual"
+
+msgid "CountDown"
+msgstr "Hitung mundur"
+
+msgid "Days"
+msgstr "Hari"
+
+msgid "Hours"
+msgstr "Jam	"
+
+msgid "Minutes"
+msgstr "Menit"
+
+msgid "Seconds"
+msgstr "Detik"
+
+msgid "Time-limited group buy"
+msgstr "Batas waktu patungan"
+
+msgid "Round"
+msgstr "Babak"
+
+msgid "people attended"
+msgstr ""
+
+msgid "left"
+msgstr "Sisa"
+
+msgid "Only"
+msgstr ""
+
+msgid "How to play"
+msgstr "Bagaimana membeli"
+
+msgid "Detail"
+msgstr "Rincian	"
+
+msgid "Select the product and make payment. It will be completed once the number of buyers reached the required number."
+msgstr "Pilih produk dan lakukan pembayaran. Itu akan komplit ketika jumlah pembeli mencapai jumlah yang telah ditentukan"
+
+msgid "Product Detail"
+msgstr "Rincian produk"
+
+msgid "Join"
+msgstr "Gabung"
+
+msgid "Order {}"
+msgstr ""
+
+msgid "Share goods I like"
+msgstr "Bagikan barang yang saya suka"
+
+#, python-format
+msgid "Help this product get %(num)s shares, then you can order it."
+msgstr "Bantu produk ini dapat %(num)s shares, lalu kamu bisa memesannya"
+
+msgid "Proposed price"
+msgstr "Ulasan Harga"
+
+#, python-format
+msgid "%(num)s left"
+msgstr "%(num)s Sisa"
+

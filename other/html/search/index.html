@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+
+<style type="text/css">
+*{margin:0;padding:0;list-style-type:none;}
+/*a,img{border:0;}*/
+/*body{font:12px "宋体","Arial Narrow",HELVETICA;background:#fff;-webkit-text-size-adjust:100%;}*/
+/*a{color:#2d374b;text-decoration:none}*/
+/*a:hover{color:#cd0200;text-decoration:underline}*/
+
+
+/* searchTxt */
+.searchBtn button,.searchTxt .searchMenu .searchSelected{background-image:url(images/searchbg.png);background-repeat:no-repeat;}
+
+.searchTxt{float:left;height:30px;border:2px solid #d3d3d3;border-right:0;position:relative;z-index:20;background:#fff;}
+.searchTxt .radius{width:1px;height:1px;overflow:hidden;background:#f4f4f4;position:absolute;top:-2px;left:-2px;}
+/*.searchTxtHover{float:left;width:399px;height:30px;border:2px solid #3297d8;border-right:0;position:relative;z-index:20;background:#fff;}*/
+/*.searchTxtHover .radius{width:1px;height:1px;overflow:hidden;background:#cce5f5;position:absolute;top:-2px;left:-2px;}*/
+
+.searchTxt .searchMenu{float:left;}
+.searchTxt .searchMenu .searchSelected{color:#a8a8a8;cursor:pointer;font-size:14px;font-weight:bold;height:30px;line-height:30px;padding:0 8px;padding-left:5px;width:48px;background-position:0px -54px;}
+.searchTxt .searchMenu .searchOpen{background-position:0px -104px;}
+
+.searchTxt .searchMenu .searchTab{display:none; position:absolute;top:30px;left:-2px;border:2px solid #a8a8a8;border-top:0;background:#fff;z-index:20;}
+.searchTxt .searchMenu .searchTab li{width:58px;height:28px;line-height:28px;color:#a8a8a8;font-size:14px;font-weight:bold;text-indent:10px;cursor:pointer;}
+.searchTxt .searchMenu .searchTab li.selected{background:#edf3fc;color:#6994c1;}
+
+.searchTxt input{float:left;border:0;background:#fff;color:#333;font:14px/22px '宋体',verdana,tahoma,arial,'SimSun',sans-serif;width:221px;height:22px;margin:0;outline:medium none;padding:4px;}
+.searchBtn{float:left;}
+.searchBtn button{background-position:0px 0px;border:0;color:#fff;cursor:pointer;float:left;font-size:16px;height:34px;text-indent:-9999px;width:86px;}
+</style>
+
+<script type="text/javascript" src="js/jquery-1.7.min.js"></script>
+<script type="text/javascript">
+$(function(){ 
+
+	$("#searchSelected").click(function(){ 
+		$("#searchTab").show();
+		$(this).addClass("searchOpen");
+	}); 
+
+	 
+	$("#searchTab li").click(function(){
+		$("#searchSelected").html($(this).html());
+		$("#searchTab").hide();
+		$("#searchSelected").removeClass("searchOpen");
+	});
+	
+});
+</script>
+</head>
+<body>
+
+<form  target="_blank" style="width:487px;height:34px;margin:40px auto 0 auto;">
+	<div id="searchTxt" class="searchTxt" >
+		<div class="radius" style="top:-2px;"></div>
+		<div class="radius" style="top:31px;"></div>
+		
+		<div class="searchMenu">
+			
+			<div class="searchSelected" id="searchSelected">项目</div>
+			
+			<div style="display:none;" class="searchTab" id="searchTab">
+				<div class="radius" style="top:259px;"></div>
+				<div class="radius" style="top:259px;left:59px;"></div>
+				<ul>
+					<li class="">项目</li>
+					<li>人员</li>
+					<li>承包商</li>
+				</ul>
+			</div>
+			
+		</div>
+		
+		<input name="w" type="text" />
+		
+	</div>
+	
+	<div class="searchBtn">
+		<button id="searchBtn" type="submit">搜狗</button>
+	</div>
+
+</form>
+
+</body>
+</html>

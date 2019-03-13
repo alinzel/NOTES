@@ -1,0 +1,561 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <style>
+        body, div, p, a, ul, li, h1, h2, h3, h4, h5, h6, pre, img, main {
+            margin: 0;
+            padding: 0;
+        }
+
+        @media (max-width: 500px) {
+            main {
+                width: 100%;
+                margin: 0 auto;
+                background-color: #ffffff;
+                height: 100%;
+            }
+
+            .top{
+                width: 100%;
+                text-align: center;
+                position:fixed;
+                top:0px;overflow: hidden
+            }
+            .title {
+
+                height: 45px;
+                line-height: 45px;
+                text-align: center;
+                font-size: 14px;
+                color: #ffffff;
+                background-color: #ff96ae;
+                top: 0px;
+            }
+
+            .prev {
+                float: left;
+                color: #ffffff;
+                font-size: 12px;
+                line-height: 45px;
+                margin-left: 8px;
+            }
+
+            .next {
+                float: right;
+                color: #ffffff;
+                font-size: 12px;
+                line-height: 45px;
+                margin-right: 8px;
+            }
+
+            .margin_top {
+                margin-top: 45px;
+            }
+
+            #product {
+                width: 100%;
+                height: 50px;
+                overflow: hidden;
+            }
+
+            #product .product_icon {
+                margin-left: 10px;
+                margin-top: 10px;
+                width: 35px;
+                height: 35px;
+                float: left;
+            }
+
+            #product .product_name {
+                margin-left: 10px;
+                line-height: 50px;
+                align-content: center;
+                color: #333333;
+                font-size: 9px;
+                float: left;
+            }
+
+            .product_go {
+                color: #dddddd;
+                float: right;
+                margin-right: 10px;
+                line-height: 50px;
+                font-size: 16px;
+                padding: 5px;
+            }
+
+            .head {
+                height: 42px;
+                width: 100%;
+                overflow: hidden;
+            }
+
+            .header {
+                height: 36px;
+                width: 36px;
+                border-radius: 50%;
+                float: left;
+                margin-top: 10px;
+                margin-left: 10px;
+            }
+
+            .name {
+                float: left;
+                padding-left: 12px;
+                line-height: 42px;
+                color: #777;
+                font-size: 12px;
+            }
+
+            .message {
+                margin-left: 50px;
+                color: #333;
+                font-size: 12px;
+                line-height: 10px;
+            }
+
+            .time {
+                margin-left: 50px;
+                color: #999;
+                font-size: 12px;
+                margin-top: 4px;
+            }
+
+            .send_message {
+                float: right;
+                width: 20px;
+                height: 16px;
+                margin-right: 10px;
+            }
+
+            #messages {
+                margin-left: 50px;
+            }
+
+            #messages .head {
+                height: 42px;
+                width: 100%;
+                overflow: hidden;
+            }
+
+            #messages .header {
+                height: 36px;
+                width: 36px;
+                border-radius: 50%;
+                float: left;
+                margin-top: 10px;
+                margin-left: 10px;
+            }
+
+            #messages .name {
+                float: left;
+                padding-left: 10px;
+                line-height: 42px;
+                color: #777;
+                font-size: 12px;
+            }
+
+            #messages .message {
+                margin-left: 50px;
+                color: #333;
+                font-size: 12px;
+                line-height: 10px;
+            }
+
+            #messages .time {
+                margin-left: 50px;
+                color: #999;
+                font-size: 12px;
+                margin-top: 4px;
+            }
+
+            #messages .send_message {
+                float: right;
+                width: 12px;
+                height: 10px;
+                margin-right: 10px;
+            }
+
+            .upload {
+                position: fixed;
+                bottom: 0px;
+                display: block;
+                width: 100%;
+            }
+
+            .unupload {
+                position: fixed;
+                bottom: 0px;
+                display: none;
+                width: 100%;
+            }
+
+            #upload .input {
+                float: left;
+                width: 84%;
+                color: #666666;
+                height: 35px;
+                font-size: 12px;
+            }
+
+            #upload .submit {
+                float: right;
+                background: #ff96ae;
+                height: 35px;
+                width: 16%;
+                border-radius: 5px;
+                text-align: center;
+                line-height: 35px;
+                color: #ffffff;
+                font-size: 12px;
+            }
+
+        }
+
+        @media (min-width: 500px) {
+            main {
+                width: 650px;
+                margin: 0 auto;
+                background-color: #ffffff;
+                height: 100%;
+            }
+            .top{
+                width: 650px;
+                text-align: center;
+                position:fixed;
+                top:0px;overflow: hidden
+            }
+            .title {
+
+                height: 48px;
+                line-height: 48px;
+                text-align: center;
+                font-size: 24px;
+                color: #ffffff;
+                background-color: #ff96ae;
+                top: 0px;
+            }
+
+            .prev {
+                float: left;
+                color: #ffffff;
+                font-size: 15px;
+                line-height: 48px;
+                margin-left: 12px;
+            }
+
+            .next {
+                float: right;
+                color: #ffffff;
+                font-size: 15px;
+                line-height: 40px;
+                margin-right: 12px;
+            }
+
+            .margin_top {
+                margin-top: 40px;
+            }
+
+            #product {
+                width: 650px;
+                height: 80px;
+                overflow: hidden;
+            }
+
+            #product .product_icon {
+                margin-left: 10px;
+                margin-top: 10px;
+                width: 57px;
+                height: 57px;
+                float: left;
+            }
+
+            #product .product_name {
+                margin-left: 10px;
+                line-height: 80px;
+                align-content: center;
+                color: #333333;
+                font-size: 16px;
+                float: left;
+            }
+
+            .product_go {
+                color: #dddddd;
+                float: right;
+                margin-right: 10px;
+                line-height: 80px;
+                font-size: 16px;
+                padding: 5px;
+            }
+
+            .head {
+                height: 70px;
+                width: 650px;
+                overflow: hidden;
+            }
+
+            .header {
+                height: 60px;
+                width: 60px;
+                border-radius: 50%;
+                float: left;
+                margin-top: 10px;
+                margin-left: 10px;
+            }
+
+            .name {
+                float: left;
+                padding-left: 12px;
+                line-height: 70px;
+                color: #777;
+                font-size: 20px;
+            }
+
+            .message {
+                margin-left: 82px;
+                color: #333;
+                font-size: 19px;
+                line-height: 16px;
+            }
+
+            .time {
+                margin-left: 82px;
+                color: #999;
+                font-size: 15px;
+                margin-top: 4px;
+            }
+
+            .send_message {
+                float: right;
+                width: 20px;
+                height: 16px;
+                margin-right: 10px;
+            }
+
+            #messages {
+                margin-left: 82px;
+            }
+
+            #messages .head {
+                height: 70px;
+                width: 650px;
+                overflow: hidden;
+            }
+
+            #messages .header {
+                height: 60px;
+                width: 60px;
+                border-radius: 50%;
+                float: left;
+                margin-top: 10px;
+                margin-left: 10px;
+            }
+
+            #messages .name {
+                float: left;
+                padding-left: 12px;
+                line-height: 70px;
+                color: #777;
+                font-size: 20px;
+            }
+
+            #messages .message {
+                margin-left: 82px;
+                color: #333;
+                font-size: 19px;
+                line-height: 16px;
+            }
+
+            #messages .time {
+                margin-left: 82px;
+                color: #999;
+                font-size: 15px;
+                margin-top: 4px;
+            }
+
+            #messages .send_message {
+                float: right;
+                width: 20px;
+                height: 16px;
+                margin-right: 10px;
+            }
+
+            .upload {
+                position: fixed;
+                bottom: 0px;
+                display: block;
+            }
+
+            .unupload {
+                position: fixed;
+                bottom: 0px;
+                display: none;
+            }
+
+            #upload .input {
+                float: left;
+                width: 550px;
+                color: #666666;
+                height: 40px;
+                font-size: 20px;
+            }
+
+            #upload .submit {
+                float: right;
+                background: #ff96ae;
+                height: 40px;
+                width: 100px;
+                border-radius: 5px;
+                text-align: center;
+                line-height: 40px;
+                color: #ffffff;
+                font-size: 20px;
+            }
+
+        }
+
+        .fold {
+            display: block;
+        }
+
+        .unfold {
+            display: none;
+        }
+    </style>
+    <script>
+        function prev() {
+            {% if prev == None %}
+                alert('Has been to the home page')
+                return;
+            {% endif %}
+            location.href = '{{ prev }}'
+        }
+        function next() {
+            {% if next == None %}
+                alert('It\'s up to the last page')
+                return;
+            {% endif %}
+            location.href = '{{ next }}'
+        }
+        function unfold(id) {
+            var comments = document.getElementById("product_" + id);
+            comments.className = (comments.className == "unfold") ? "fold" : "unfold";
+        }
+
+        function send_message(comment_id) {
+            var input = document.getElementById('message_input');
+            var upload = document.getElementById("upload");
+            upload.className = "upload"
+            input.focus()
+            input.setAttribute("comment-id", comment_id)
+        }
+
+        time = 0;
+        function add_comment() {
+            var input = document.getElementById('message_input')
+            if (input.getAttribute('comment-id') == 0) {
+                alert('Please click on the comments you need to reply to')
+                return
+            }
+            if(new Date() -time < 3000){
+                console.log('3000以内')
+                return ;
+            }
+
+            time = new Date()
+
+            var com_mes = $('#message_input').val();
+            var comment_id = $('#message_input').attr("comment-id");
+            $.ajax({
+                url: '/comments_reply/reply/',
+                type: 'POST',
+                data: {
+                    "id": comment_id,
+                    "message": com_mes,
+                    "photo": ''
+                },
+                dataType: 'json',
+                success: function (data) {
+                    alert("input success")
+                    $('#all_comment_' + comment_id).append(data.html);
+                },
+                error:function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Upload failed, please check the network")
+                }
+            })
+        }
+    </script>
+
+</head>
+<body>
+{% import "pagination.html" as page %}
+<main id="main">
+    <div class="top">
+        <div class="prev" onclick="prev()"> < Previous page</div>
+        <div class="next" onclick="next()">Next page ></div>
+        <div class="title">Comments</div>
+    </div>
+
+    <div class="margin_top"></div>
+    {% for comment in comments %}
+    <div id="product" onclick="unfold({{ comment.id }})">
+        <img class="product_icon" src="{{ comment.parent.media_urls[0] }}">
+        <div class="product_name">{{ comment.parent.title }}</div>
+        <div class="product_go" > ></div>
+        <div style="background: #dddddd;height: 0.5px; width: 100%"></div>
+    </div>
+    <div id="product_{{ comment.id }}" class="unfold">
+        <div id="all_comment_{{ comment.id }}" style="background: #f6f6f7;overflow: hidden">
+            <div class="head">
+                <img class="header" src="{{ comment.user.icon_url }}">
+                <div class="name"> {{ comment.user.name }}</div>
+            </div>
+
+            <div class="message">{{ comment.message }}</div>
+            <div class="time">
+                <div style="float: left">{{ comment.created_at.format('YYYY-MM-DD HH:mm ZZ') }}</div>
+                <img id="comment" class="send_message" onclick="send_message({{ comment.id }})"
+                     src="http://pic.qiantucdn.com/58pic/14/61/47/26C58PICQW5_1024.jpg">
+            </div>
+            {% for reply in comment.comments %}
+            <div id="messages">
+                <div class="head">
+                    <img class="header" src="{{ reply.user.icon_url }}">
+                    <div class="name"> {{ reply.user.name }}</div>
+                </div>
+
+                <div class="message">{{ reply.message }}</div>
+                <div class="time">
+                    <div style="float: left">{{ reply.created_at.format('YYYY-MM-DD HH:mm ZZ') }}</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+    {% endfor %}
+    <div id="upload" class="unupload">
+        <input type="text" comment-id='0' id="message_input" class="input" placeholder="write a comment">
+        <div id="submit" class="submit" onclick="add_comment()">submit</div>
+    </div>
+
+</main>
+
+<script>
+    var upload = document.getElementById("upload");
+    document.getElementById('message_input').onfocus = function () {
+        upload.className = "upload"
+    }
+    document.getElementById("main").addEventListener("click", function (e) {
+        if (e.target.id != "message_input" && e.target.id != "submit" && e.target.localName != "img") {
+            upload.className = "unupload"
+        }
+    });
+
+</script>
+</body>
+</html>

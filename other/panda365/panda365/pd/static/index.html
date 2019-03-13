@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Panda 365</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <style>
+        html{
+            height:100%;
+        }
+        body{
+                   margin:0;
+            height:100%;
+        }
+        .main{
+            height:100%;
+            width:100%;
+            background:url("/static/images/bg.jpg") no-repeat;
+            background-size:100% 100%;
+            position:relative;
+            max-width:500px;
+            box-sizing:border-box;
+            margin:0 auto;
+        }
+        .button{
+            position:absolute;
+            top:60%;
+            left:25%;
+            margin:0 auto 0 auto;
+            height:40px;
+            width:50%;
+            background-color:#f2a7b8;
+            border-radius:5px;
+            color:#fff;
+            line-height:40px;
+            font-size:16px;
+           text-align:center;
+           box-shadow:1px 3px 0px #ef97a9;
+        }
+
+    </style>
+</head>
+<body>
+<script>
+
+       function download(){
+            location.href='https://play.google.com/store/apps/details?id=com.panda365'
+       }
+
+</script>
+<div class="main">
+    <div class="button" onclick="download()">
+        Download Now
+    </div>
+</div>
+
+</body>
+</html>

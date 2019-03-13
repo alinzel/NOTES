@@ -1,0 +1,175 @@
+# Translations template for PROJECT.
+# Copyright (C) 2017 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2017-07-31 16:08+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.4.0\n"
+
+msgid "Not a valid datetime value"
+msgstr ""
+
+msgid "locale"
+msgstr ""
+
+msgid "content"
+msgstr ""
+
+msgid "translation for each locale can only be given once"
+msgstr ""
+
+msgid "payment_pending"
+msgstr ""
+
+msgid "payment_processing"
+msgstr ""
+
+msgid "payment_failed"
+msgstr ""
+
+msgid "paid"
+msgstr ""
+
+msgid "proccessing"
+msgstr ""
+
+msgid "shipped"
+msgstr ""
+
+msgid "canceled"
+msgstr ""
+
+msgid "1.What is goup buy?"
+msgstr ""
+
+msgid ""
+"Goup buy is an activity that multiple people place orders together to get"
+" a lower\n"
+"            discount than normal online shopping for a spcific product."
+msgstr ""
+
+msgid "2. How to buy?"
+msgstr ""
+
+msgid "1. Select the product, click \"buy\" and then select the specification."
+msgstr ""
+
+msgid "2. Fill your delivery address."
+msgstr ""
+
+msgid "3. Select payment methord and finish payment for your order."
+msgstr ""
+
+msgid "4. Waiting for other buyers to attend the acitivity."
+msgstr ""
+
+msgid ""
+"5. The group buy will be completed when the number of buyers reach the "
+"required number within a limited\n"
+"            time."
+msgstr ""
+
+msgid "3. What is a successful goup buy?"
+msgstr ""
+
+msgid ""
+"You will enjoy the goup buy price within a limit time. The goup buy will "
+"be\n"
+"            complete when the number of buyers reach the required number."
+msgstr ""
+
+msgid "4. How to refund if the goup buy failed?"
+msgstr ""
+
+msgid ""
+"The goup buy will be failed if the number of buyers didn't reach the "
+"required\n"
+"            number within the specific time, the customer service will "
+"contact you to refund for you."
+msgstr ""
+
+msgid "Panda365 - Group Buy, Lower Price Shopping"
+msgstr ""
+
+msgid "Goup-buy price"
+msgstr ""
+
+#, python-format
+msgid "%(num)s sold"
+msgstr ""
+
+msgid "CountDown"
+msgstr ""
+
+msgid "Days"
+msgstr ""
+
+msgid "Hours"
+msgstr ""
+
+msgid "Minutes"
+msgstr ""
+
+msgid "Seconds"
+msgstr ""
+
+msgid "Time-limited group buy"
+msgstr ""
+
+msgid "Round"
+msgstr ""
+
+msgid "people attended"
+msgstr ""
+
+msgid "left"
+msgstr ""
+
+msgid "Only"
+msgstr ""
+
+msgid "How to play"
+msgstr ""
+
+msgid "Detail"
+msgstr ""
+
+msgid ""
+"Select the product and make payment. It will be completed once the number"
+" of buyers reached the required number."
+msgstr ""
+
+msgid "Product Detail"
+msgstr ""
+
+msgid "Join"
+msgstr ""
+
+msgid "Order {}"
+msgstr ""
+
+msgid "Share goods I like"
+msgstr ""
+
+#, python-format
+msgid "Help this product get %(num)s shares, then you can order it."
+msgstr ""
+
+msgid "Proposed price"
+msgstr ""
+
+#, python-format
+msgid "%(num)s left"
+msgstr ""
+

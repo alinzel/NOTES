@@ -1,0 +1,17 @@
+{% extends "admin/model/list.html" %}
+
+{% block body %}
+<h2>
+{% if admin_view.country %}
+{{ admin_view.country.admin_label }}{{ admin_view.name}}
+{% else %}
+{{ admin_view.name }}
+{% endif %}
+</h2>
+{% if admin_view.endpoint == 'presale-post' %}
+<p>你可以通过添加vendor link来发售商品。</p>
+{% elif admin_view.endpoint == 'onsale-post' %}
+<p>如果在售商品的所有vendor link都被删除，它将被系统置为预售商品</p>
+{% endif %}
+{{ super() }}
+{% endblock %}

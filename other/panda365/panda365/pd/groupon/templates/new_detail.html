@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta property =“og:image” content="{{ game.product.media_urls[0] }}"/>
+    <title>{% trans %}It's quite cheap and I want to buy it, will you?{% endtrans %}</title>
+    <!--<link rel="stylesheet" href="/static/css/swiper-3.4.2.min.css">-->
+    <link rel="stylesheet" href="/static/css/swiper-3.4.2.min.css">
+    <style>
+        body, div, p, a, ul, li, h1, h2, h3, h4, h5, h6, pre, img {
+            margin: 0;
+            padding: 0;
+        }
+        a{ text-decoration:none}
+
+        @media (max-width: 500px) {
+            main {
+                width: 100%;
+                margin: 0 auto;
+                background-color: #ffffff;
+                height: 100%;
+            }
+
+            .swiper-container {
+                width: 100%;
+            }
+
+            .group-buy {
+                font-size: 12px;
+                margin: 0 auto;
+                position: absolute;
+                width: 105px;
+                height: 21px;;
+                color: #ffffff;
+                bottom: 0px;
+                background-color: #ff96ae;
+                z-index: 2;
+                line-height: 21px;
+                al;
+                border-top-right-radius: 3px;
+            }
+
+            .product_all {
+                width: 100%;
+                height: 61px;;
+                background: #ff96ae;
+            }
+
+            #pt_all .currency {
+                float: left;
+                margin-top: 23px;
+                font-size: 15px;
+                margin-left: 8px;
+            }
+
+            #pt_all .price {
+
+                height: 36px;;
+                font-size: 30px;
+                float: left;
+                line-height: 60px;
+            }
+
+            .all_old{
+                margin-top: 12px;
+                float: left;
+                margin-left: 3px;
+            }
+            #pt_all .old_price {
+                height: 12px;;
+                top: 12px;
+                font-size: 12px;
+                left: 89px;;
+                margin-bottom: 1px;
+            }
+
+            #pt_all .has_sold {
+
+                height: 18px;
+                background-color: #ff7495;
+                border-radius: 2px;
+                /*line-height: 106px;*/
+                text-align: center;
+                font-size: 14px;
+                float: left;
+            }
+
+             #pt_all .countdown_all {
+                width: 60px;
+                height: 60px;
+                right: 120px;
+                background-color: #ffcf77;
+                border-radius: 100%;
+                float: right;
+            }
+
+            #pt_all .countdown_all_right {
+                /*width: 156px;*/
+                height: 60px;
+                background-color: #ffcf77;
+                float: right;
+                border-top-left-radius: 30px;
+                border-bottom-left-radius: 30px;
+            }
+
+            #pt_all .countdown {
+                font-size: 12px;
+                text-align: center;
+            }
+
+            #pt_all .countdown_normal {
+                /*width: 31px;*/
+                height: 18px;
+                background: #854c5a;
+                border-radius: 2px;
+                text-align: center;
+                float: right;
+                font-size: 14px;
+                padding-left: 2px;
+                padding-right: 2px;
+                margin-left: 10px;
+                margin-right: 10px;
+                /*margin: auto;*/
+                /*position: absolute;*/
+                /*margin-left: 30px;*/
+            }
+
+            #pt_all .time_normal {
+                font-size: 8px;
+                color: #854c5a;
+                /*float: right;*/
+                text-align: center;
+                margin: 0 auto;
+                position: relative;
+                transform: scale(0.8);
+            }
+
+            .timeWarp{
+                float: right;
+                text-align: center;
+            }
+
+            .product_dis {
+                font-size: 15px;
+                color: #333333;
+                padding-left: 11px;
+                margin-top: 15px;
+            }
+
+            .progress {
+                border: 1px solid #ff96ae;
+                border-radius: 2px;
+                font-size: 12px;
+                height: 19px;
+                <!--width: 236px;-->
+                margin-left: 18px;
+                display:inline-block;
+                margin-left: 10px;
+                margin-top: 6px;
+                color: #ff96ae;
+                padding-left: 3px;
+            }
+
+            .progressbar {
+                height: 6px;
+                width: 95%;
+                margin-left: 10px;
+                margin-right: 10px;
+                background: #ffecf0;
+                border-radius: 2px;
+                margin-top: 15px;
+            }
+
+            .product_rtr {
+                margin-top: 6px;
+                margin-left: 10px;
+                margin-right: 10px;
+                overflow: hidden;
+            }
+
+            #rtr .product {
+                margin-top: 6px;
+                font-size: 13px;
+                color: #999999;
+                float: left;
+            }
+
+            #rtr .round_data {
+                margin-top: 6px;
+                font-size: 13px;
+                color: #ff96ae;
+                float: left;
+            }
+
+            .header_icon {
+                width: 27px;
+                height: 27px;
+                border-radius: 100%;
+                margin-left: 6px;
+                float: right;
+            }
+
+            .header_discribe {
+                margin-top: 6px;
+                font-size: 13px;
+                color: #999999;
+                float: right;
+            }
+
+            .header_discribe_data {
+                margin-top: 6px;
+                font-size: 13px;
+                color: #ff96ae;
+                float: right;
+            }
+
+            .pt_play_all {
+                position: relative;
+                background-color: #fffaf0;
+                height: 102px;
+                margin-top: 18px;
+            }
+
+            #pt_play .pt_play {
+                font-size: 14px;
+                color: #333333;
+                padding-top: 8px;
+                margin-left: 10px;
+            }
+
+            #pt_play .pt_detail {
+                position: absolute;
+                right: 10px;;
+                top: 8px;
+                color: #999;
+                font-size: 14px;
+            }
+
+            #pt_play .pt_view {
+                height: 1px;
+                width: 95%;
+                margin-left: 11px;
+                margin-right: 11px;
+                background: #e0e0e0;
+                margin-top: 12px;
+            }
+
+            #pt_play .pt_warn {
+                width: 18px;
+                height: 18px;
+                color: #ffffff;
+                background-color: #d3cbce;
+                margin-top: 15px;
+                margin-left: 15px;
+                border-radius: 100%;
+                font-size: 15px;
+                line-height: 18px;
+                text-align: center;
+            }
+
+            #pt_play .pt_warn_discribe {
+                position: absolute;
+                top: 47px;
+                left: 42px;
+                right: 9px;
+                color: #999;
+                font-size: 12px;
+            }
+
+            .shipping_fees {
+                font-size: 12px;
+                color: #666;
+                margin-left: 10px;
+                margin-top: 10px;
+            }
+
+            .interval {
+                margin-top: 14px;
+                background-color: #f6f6f7;
+                height: 10px;
+                width: 100%;
+            }
+
+            .label {
+                width: 4px;
+                height: 41px;
+                background-color: #ff96ae;
+            }
+
+            #pd_all .pt_detail {
+                position: absolute;
+                font-size: 15px;
+                color: #333333;
+                left: 18px;
+                top: 11px;
+            }
+
+            #pd_all .view {
+                width: 100%;
+                height: 1px;
+                background-color: #f0f0f0;
+
+            }
+
+            #pd_all .pt_detail_title {
+                color: #999999;
+                margin-bottom: 11px;
+                font-size: 14px;
+                margin-left: 9px;
+                float: left;
+            }
+
+            #pd_all .pt_detail_content {
+                float: left;
+                color: #333;
+                font-size: 14px;
+                position: absolute;
+                margin-left: 157px;;
+                margin-bottom: 11px;
+            }
+
+            .place_holder {
+                height: 50px;
+                width: 100%;
+            }
+
+            .product_down {
+                color: #fff;
+                font-size: 19px;
+                background: #ff96ae;
+                height: 55px;
+                width: 100%;
+                margin: 0 auto;
+                line-height: 60px;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                text-align: center;
+                /*align-items: center;*/
+            }
+
+        }
+
+        @media (min-width: 500px) {
+            main {
+                width: 650px;
+                /*height:100%;*/
+                margin: 0 auto;
+                background-color: #fff;
+
+            }
+
+            .swiper-container {
+                width: 650px;
+            }
+
+            .group-buy {
+                font-size: 100%;
+                margin: 0 auto;
+                position: absolute;
+                width: 172px;
+                height: 35px;;
+                color: #ffffff;
+                bottom: 0px;
+                background-color: #ff96ae;
+                z-index: 2;
+                line-height: 35px;
+                text-align: center;
+                border-top-right-radius: 5px;
+            }
+
+            .product_all {
+                width: 650px;
+                height: 100px;;
+                background: #ff96ae;
+            }
+
+            #pt_all .currency {
+                height: 38px;;
+                float: left;
+                margin-top: 38px;
+                font-size: 22px;
+                margin-left: 14px;
+            }
+
+            #pt_all .price {
+                height: 60px;
+                margin-top: 16px;
+                font-size: 42px;
+                float: left;
+                margin-left: 3px;
+            }
+
+            .all_old{
+                margin-top: 20px;
+                float: left;
+                margin-left: 6px;
+            }
+
+            #pt_all .old_price {
+                height: 19px;;
+                top: 20px;
+                font-size: 19px;
+                left: 146px;;
+                margin-bottom: 2px;
+                margin-left: 4px;
+            }
+
+            #pt_all .has_sold {
+                height: 30px;
+                background-color: #ff7495;
+                border-radius: 4px;
+                /*line-height: 106px;*/
+                text-align: center;
+                font-size: 23px;
+            }
+
+            #pt_all .countdown_all_right {
+                /*width: 256px;*/
+                height: 100px;
+                background-color: #ffcf77;
+                float: right;
+                border-top-left-radius: 50px;
+                border-bottom-left-radius: 50px;
+            }
+
+            #pt_all .countdown {
+                font-size: 21px;
+                text-align: center;
+            }
+
+            #pt_all .countdown_normal {
+                /*width: 31px;*/
+                height: 29px;
+                background: #854c5a;
+                border-radius: 4px;
+                text-align: center;
+                float: right;
+                font-size: 22px;
+                padding-left: 3px;
+                padding-right: 3px;
+                margin-left: 13px;
+                margin-right: 13px;
+                /*margin: auto;*/
+                /*position: absolute;*/
+                /*margin-left: 30px;*/
+            }
+
+
+            #pt_all .time_normal {
+                font-size: 14px;
+                color: #854c5a;
+                /*float: right;*/
+                text-align: center;
+                margin: 0 auto;
+                position: relative;
+            }
+
+
+            .timeWarp{
+                float: right;
+                text-align: center;
+            }
+
+            .product_dis {
+                font-size: 26px;
+                color: #333333;
+                padding-left: 18px;
+                margin-top: 25px;
+            }
+
+            .product_dis {
+                font-size: 26px;
+                color: #333333;
+                padding-left: 18px;
+                margin-top: 25px;
+            }
+
+            .progress {
+                border: 1px solid #ff96ae;
+                border-radius: 4px;
+                font-size: 20px;
+                height: 32px;
+                margin-left: 18px;
+                display:inline-block;
+                margin-top: 10px;
+                color: #ff96ae;
+                padding-left: 5px;
+            }
+
+            .progressbar {
+                height: 11px;
+                width: 95%;
+                margin-left: 18px;
+                margin-right: 18px;
+                background: #ffecf0;
+                border-radius: 4px;
+                margin-top: 25px;
+            }
+
+            .product_rtr {
+                margin-top: 10px;
+                margin-left: 18px;
+                margin-right: 18px;
+                overflow: hidden;
+            }
+
+            #rtr .product {
+                margin-top: 10px;
+                font-size: 22px;
+                color: #999999;
+                float: left;
+            }
+
+            #rtr .round_data {
+                margin-top: 10px;
+                font-size: 22px;
+                color: #ff96ae;
+                float: left;
+            }
+
+            .header_icon {
+                width: 45px;
+                height: 45px;
+                border-radius: 100%;
+                margin-left: 10px;
+                float: right;
+            }
+
+            .header_discribe {
+                margin-top: 10px;
+                font-size: 22px;
+                color: #999999;
+                float: right;
+            }
+
+            .header_discribe_data {
+                margin-top: 10px;
+                font-size: 22px;
+                color: #ff96ae;
+                float: right;
+            }
+
+            .pt_play_all {
+                position: relative;
+                background-color: #fffaf0;
+                height: 156px;
+                margin-top: 30px;
+            }
+
+            #pt_play .pt_play {
+                font-size: 24px;
+                color: #333333;
+                padding-top: 14px;
+                margin-left: 17px;
+            }
+
+            #pt_play .pt_detail {
+                position: absolute;
+                right: 17px;;
+                top: 14px;
+                color: #999;
+                font-size: 24px;
+            }
+
+            #pt_play .pt_view {
+                height: 1px;
+                width: 95%;
+                margin-left: 18px;
+                margin-right: 18px;
+                background: #e0e0e0;
+                margin-top: 21px;
+            }
+
+            #pt_play .pt_warn {
+                width: 30px;
+                height: 30px;
+                color: #ffffff;
+                background-color: #d3cbce;
+                margin-top: 26px;
+                margin-left: 26px;
+                border-radius: 100%;
+                font-size: 25px;
+                line-height: 30px;
+                text-align: center;
+            }
+
+            #pt_play .pt_warn_discribe {
+                position: absolute;
+                top: 78px;
+                left: 70px;
+                right: 16px;
+                color: #999;
+                font-size: 20px;
+            }
+
+            .shipping_fees {
+                font-size: 21px;
+                color: #666;
+                margin-left: 18px;
+                margin-top: 17px;
+            }
+
+            .interval {
+                margin-top: 24px;
+                background-color: #f6f6f7;
+                height: 17px;
+                width: 100%;
+            }
+
+            .label {
+                width: 7px;
+                height: 69px;
+                background-color: #ff96ae;
+            }
+
+            #pd_all .pt_detail {
+                position: absolute;
+                font-size: 26px;
+                color: #333333;
+                left: 30px;
+                top: 18px;
+            }
+
+            #pd_all .view {
+                width: 100%;
+                height: 1px;
+                background-color: #f0f0f0;
+            }
+
+            #pd_all .pt_detail_title {
+                color: #999999;
+                margin-bottom: 25px;
+                font-size: 24px;
+                margin-left: 15px;
+                float: left;
+            }
+
+            #pd_all .pt_detail_content {
+                float: left;
+                color: #333;
+                font-size: 24px;
+                position: absolute;
+                margin-left: 258px;;
+                margin-bottom: 25px;
+            }
+
+            .place_holder {
+                height: 60px;
+                width: 650px;
+            }
+
+            .product_down {
+                color: #fff;
+                font-size: 22px;
+                background: #ff96ae;
+                height: 60px;
+                width: 650px;
+                margin: 0 auto;
+                line-height: 60px;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                text-align: center;
+                /*align-items: center;*/
+            }
+        }
+
+        .text {
+            color: #ffffff;
+        }
+
+        .product_down:hover {
+            cursor: pointer
+        }
+
+    </style>
+
+
+</head>
+<body>
+
+<main>
+
+    <div style="position: relative">
+        <div class="group-buy">{% trans %}Goup-buy price{% endtrans %}</div>
+        <!--Goup-buy price-->
+        <div class="swiper-container">
+            <div class="swiper-wrapper banner">
+                {% for i in game.product.media_urls %}
+                <div class="swiper-slide">
+                    <img id="{{ i }}" src="{{ i }}"
+                         class="icon_discirbe" style="display: block;width: 100%;height: 100%">
+                </div>
+                {% endfor %}
+
+            </div>
+            <!-- 如果需要分页器 -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+
+    <div id="pt_all" class="product_all">
+        <div style="overflow: hidden">
+            <div class="text currency">{{ game.currency.symbol }}</div>
+            <div class="text price">{{ game.price}}</div>
+            <div class="all_old">
+                <div class="text old_price" style="color:#fed8e1">{{ game.currency.symbol }}{{ game.market_price}}</div>
+                <div class="text has_sold">{% trans num=game.sold_num -%}
+                    {{ num }} sold
+                    {%- endtrans %}
+                </div>
+            </div>
+
+            <div class="countdown_all_right" style="float: right">
+                <div class="text countdown">{% trans %}CountDown{% endtrans %}</div>
+                <div style="overflow: hidden;margin-top: 3px;">
+                    <div class="timeWarp">
+                        <div id="secs" class="text countdown_normal">06</div>
+                        <div class="time_normal">{% trans %}Seconds{% endtrans %}</div>
+                    </div>
+
+                    <div class="timeWarp">
+                        <div id="mins" class="text countdown_normal">06</div>
+                        <div class="time_normal">{% trans %}Minutes{% endtrans %}</div>
+                    </div>
+                    <div class="timeWarp">
+                        <div id="hours" class="text countdown_normal">06</div>
+                        <div class="time_normal">{% trans %}Hours{% endtrans %}</div>
+                    </div>
+                    <div class="timeWarp" style="margin-left: 15px">
+                        <div id="days" class="text countdown_normal">06</div>
+                        <div class="time_normal ">{% trans %}Days{% endtrans %}</div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+    <p class="product_dis">{{ game.product.title }}</p>
+    <p class="progress">{% trans %}Time-limited group buy{% endtrans %}</p>
+    <!--Time-limited group buy-->
+    <div class="progressbar">
+        <div style="width:100%;background-color: #ff96ae;height: 8px; border-radius: 3px"></div>
+    </div>
+
+    <div id="rtr" class="product_rtr">
+        <div>
+            <p class="product">{% trans %}Round{% endtrans %}:&nbsp;</p>
+            <!--Round-->
+            <p class="round_data">{{ game.issue_id }}</p>
+        </div>
+
+        <div style="width: 100%;">
+            {% for order in orders %}
+            <img src="{{ order.user.icon_url }}" class="header_icon">
+            {% endfor %}
+            <p class="header_discribe"> {% trans %}people attended{% endtrans %}</p>
+            <!--people attended-->
+            <p class="header_discribe_data"> &nbsp;{{ game.sold_shares }}&nbsp;</p>
+            <p class="header_discribe"> &nbsp;{% trans %}left{% endtrans %},</p>
+            <!--left-->
+            <p class="header_discribe_data"> {{ game.left_shares }}</p>
+            <p class="header_discribe"> {% trans %}Only{% endtrans %}&nbsp;</p>
+            <!--Only-->
+        </div>
+    </div>
+
+    <div>
+        <div id="pt_play" class="pt_play_all">
+            <p class="pt_play">{% trans %}How to play{% endtrans %}</p>
+            <!--How to play-->
+            <p class="pt_detail" onclick="htp()" >{% trans %}Detail{% endtrans %} ></p>
+            <!--Detail-->
+            <div class="pt_view"></div>
+            <div class="pt_warn">!</div>
+            <p class="pt_warn_discribe">{% trans %}Select the product and make payment. It will be completed once the
+                number of buyers reached the required number.{% endtrans %}</p>
+            <!--Select the product and make payment. It will be completed once the number of buyers reached the required number.-->
+        </div>
+        <div class="shipping_fees">Shipping fees: free</div>
+        <div class="interval"></div>
+    </div>
+
+    <div id="pd_all">
+        <div style="position: relative;">
+            <div class="label"></div>
+            <p class="pt_detail">{% trans %}Product Detail{% endtrans %}</p>
+            <!--Product Detail-->
+        </div>
+        <div class="view"></div>
+
+        {% for info in product_info %}
+        <div style="overflow: hidden;margin-top: 10px">
+            <p class="pt_detail_title">{{ info.name }}:</p>
+            <p class="pt_detail_content">{{ info.value }}</p>
+        </div>
+        {% endfor %}
+
+        <div class="place_holder"></div>
+    </div>
+
+    <div>
+        <p class="product_down" onclick="download()">{% trans %}Join{% endtrans %} Panda365</p>
+    </div>
+
+</main>
+<script type="text/javascript">(function (e, a) {
+        if (!a.__SV) {
+            var b = window;
+            try {
+                var c, l, i, j = b.location, g = j.hash;
+                c = function (a, b) {
+                    return (l = a.match(RegExp(b + "=([^&]*)"))) ? l[1] : null
+                };
+                g && c(g, "state") && (i = JSON.parse(decodeURIComponent(c(g, "state"))), "mpeditor" === i.action && (b.sessionStorage.setItem("_mpcehash", g), history.replaceState(i.desiredHash || "", e.title, j.pathname + j.search)))
+            } catch (m) {
+            }
+            var k, h;
+            window.mixpanel = a;
+            a._i = [];
+            a.init = function (b, c, f) {
+                function e(b, a) {
+                    var c = a.split(".");
+                    2 == c.length && (b = b[c[0]], a = c[1]);
+                    b[a] = function () {
+                        b.push([a].concat(Array.prototype.slice.call(arguments,
+                                0)))
+                    }
+                }
+
+                var d = a;
+                "undefined" !== typeof f ? d = a[f] = [] : f = "mixpanel";
+                d.people = d.people || [];
+                d.toString = function (b) {
+                    var a = "mixpanel";
+                    "mixpanel" !== f && (a += "." + f);
+                    b || (a += " (stub)");
+                    return a
+                };
+                d.people.toString = function () {
+                    return d.toString(1) + ".people (stub)"
+                };
+                k = "disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+                for (h = 0; h < k.length; h++)e(d, k[h]);
+                a._i.push([b, c, f])
+            };
+            a.__SV = 1.2;
+            b = e.createElement("script");
+            b.type = "text/javascript";
+            b.async = !0;
+            b.src = "undefined" !== typeof MIXPANEL_CUSTOM_LIB_URL ? MIXPANEL_CUSTOM_LIB_URL : "file:" === e.location.protocol && "//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//) ? "https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js" : "//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";
+            c = e.getElementsByTagName("script")[0];
+            c.parentNode.insertBefore(b, c)
+        }
+    })(document, window.mixpanel || []);
+    mixpanel.init("bd90fe42bf368f5bfc54b38153cb66bb");
+</script><!-- end Mixpanel -->
+<script>
+
+    function download() {
+        mixpanel.track('H5_click_down');
+        location.href = 'https://play.google.com/store/apps/details?id=com.panda365'
+    }
+    function htp() {
+        mixpanel.track('H5_click_How to buy');
+        <!--window.location.replace({{ url_for('groupon_pages.htp') }})-->
+        location.href = '{{ url_for('groupon_pages.htp') }}'
+    }
+
+
+    function fomtime() {
+        var endTime = new Date('{{ game.end_at }}');
+        var now = new Date();
+        var cut = endTime - now;
+
+        var day = Math.floor(cut / 86400000);
+        var hour = Math.floor(cut % 8640000 / 3600000);
+        var min = Math.floor(cut % 3600000 / 60000);
+        var sec = Math.floor(cut % 60000 / 1000);
+
+        if(day < 10){
+            day = '0' + day
+        }
+        if(hour < 10){
+            hour = '0' + hour
+        }
+        if(min < 10){
+            min = '0' + min
+        }
+        if(sec < 10){
+            sec = '0' + sec
+        }
+
+       if(cut <= 0){
+            day = '00';
+            hour = '00';
+            min = '00';
+            sec ='00';
+       }
+
+        document.getElementById('days').innerHTML = day;
+        document.getElementById('hours').innerHTML = hour;
+        document.getElementById('mins').innerHTML = min;
+        document.getElementById('secs').innerHTML = sec;
+        setTimeout("fomtime()", 1000);
+
+    }
+    fomtime();
+
+
+
+
+
+
+
+
+
+</script>
+
+<!-- Swiper JS -->
+<script src="/static/js/swiper-3.4.2.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        slidesPerView: 1,
+        paginationClickable: true,
+        spaceBetween: 30,
+        loop: true,
+    });
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+{% extends "admin/model/edit.html" %}
+
+{% block body %}
+<h2>
+编辑
+{% if admin_view.country %}
+{{ admin_view.country.admin_label }}{{ admin_view.name}}
+{% else %}
+{{ admin_view.name }}
+{% endif %}
+{{ model.id }}
+</h2>
+{{ super() }}
+{% endblock %}

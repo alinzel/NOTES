@@ -1,0 +1,51 @@
+<html lang="en">
+
+<title>My Application</title>
+<style>
+    #account{
+        width:50%;
+        height: 45px;
+        border-radius: 3px;
+        border: 0.5px solid;
+        margin-top: 50px;
+        margin-left:20px;
+        font-size:30px;
+    }
+    #submit{
+                text-align: center;
+                border: 1px salmon;
+                font-size: 30px;
+                width:100px;
+                height:50px;
+                align-text:center;
+
+            }
+
+</style>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul class=flashes>
+    {% for message in messages %}
+    <li style="width:100%;text-align: center; font-size:25px">{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+{% block body %}
+<form method="post">
+    <table>
+        {{ form.csrf_token }}
+        {{ form.hidden_tag() }}
+        <div style="width:100%;text-align: center;font-size:25px">{{ form.account.label }}&nbsp;{{ form.account(id='account') }}</div>
+        <div style="width:100%;text-align: center;font-size:25px">{{ form.password.label }}{{ form.password(id='account') }}</div>
+
+        <!--{{ form.password(size=150) }}-->
+        <!--{{ form.password(id='yangshuyu') }}-->
+    </table>
+
+    <div style="width:100%;margin-top:30px;text-align:center">{{ form.submit(id='submit') }}</div>
+
+
+</form>
+{% endblock %}

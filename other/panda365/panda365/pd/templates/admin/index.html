@@ -1,0 +1,37 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+<div id="account">
+  <ul class="list-inline pull-right">
+    <li>Hi {{ current_user.email.split('@')[0] }}!<li>
+    <li><a href="{{ get_url('security.logout') }}">Logout</a></li>
+    <li><a href="{{ get_url('security.change_password') }}">Change Password</a></li>
+  </ul>
+</div>
+<div id="links">
+<h3>Links</h3>
+{% for country in countries %}
+<h4>{{ country.admin_label }}</h4>
+<div class="row">
+  <div class="col-md-3">
+    <ul class="list-group">
+    {% for name, ep in [['预售商品', 'presale_post'], ['在售商品', 'onsale_post']] %}
+      <li class="list-group-item">
+        <b>{{ name }}</b> 
+        <div class="pull-right">
+          <a class="btn btn-default btn-xs" href="{{ url_for('{}_{}.create_view'.format(ep, country.name)) }}">创建</a>
+          <a class="btn btn-default btn-xs" href="{{ url_for('{}_{}.index_view'.format(ep, country.name)) }}">列表</a>
+        <div>
+      </li>  
+    {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endfor %}
+</div>
+<div id="tips" class="markdown">
+### Tips
+
+* 文件上传: 每个文件最大不超过{{ config.CLIENT_MAX_BODY_SIZE }}MB
+</div>
+{% endblock %}

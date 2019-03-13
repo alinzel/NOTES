@@ -1,0 +1,30 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: python:3.6
+      - image: redis:3.0
+      - image: postgres:9.6
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_PASSWORD: ""
+    working_directory: ~/panda365
+    steps:
+      - checkout
+      - restore_cache:
+          key: v3
+      - run: |
+          python3 -m venv ~/venv
+          . ~/venv/bin/activate
+          make install ENV=test
+      - run: |
+          . ~/venv/bin/activate
+          make ci
+      - save_cache:
+          key: v3
+          paths:
+            - "~/.cache/pip"
+            - "~/venv"
+      - store_test_results:
+          path: junit.xml
+

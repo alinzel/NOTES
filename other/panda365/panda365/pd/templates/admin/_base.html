@@ -1,0 +1,11 @@
+{% extends "admin/base.html" %}
+
+{% block tail_js %}
+{{ super() }}
+<script src="https://unpkg.com/markdown@0.5.0/lib/markdown.js"></script>
+<script>
+  $(".markdown").each(function() {
+    $(this).html(markdown.toHTML($(this).html()));
+  })
+</script>
+{% endblock %}

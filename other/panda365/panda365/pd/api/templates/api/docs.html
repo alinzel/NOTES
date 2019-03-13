@@ -1,0 +1,180 @@
+{% macro _render_fields(fields_dict, include_type=True) %}
+<ul>
+  {% for name, field in fields_dict.items() %}
+  <li>
+    {{ name }}{% if include_type %}(<b>{{ field.type }}</b>){% endif %}[{{ ', '.join(field.attrs) }}]{% if field.desc %}:
+    <div class="field-desc">{{ field.desc | safe }}</div>
+    {% endif %}
+    {% if field.fields %}
+    {{ _render_fields(field.fields) }}
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% endmacro %}
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>API Documentation</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/grids-responsive-old-ie-min.css">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/grids-responsive-min.css">
+<!--<![endif]-->
+    <style>
+      #main {
+        font-family: monospace,monospace;
+        max-width: 768px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .endpoint h3, .endpoint h4 {
+        color: grey;
+      }
+      .docs {
+        font-size: 90%;
+      }
+      .headerlink {
+        text-decoration: none;
+        font-size: 80%;
+      }
+      pre {
+        margin-bottom: 1em;
+        padding: 5px;
+        width: auto;
+        max-height: 600px;
+        overflow: auto;
+        background-color: #eff0f1;
+      }
+      code {
+        background-color: #eff0f1;
+      }
+      p code {
+        padding: 1px 5px;
+      }
+      .field-desc {
+        padding-left: 1em;
+        font-size: 90%;
+      }
+    </style>
+  </head>
+  <body>
+  <div id="main">
+    <h1>Panda365 API Docs</h1>
+    {% if config.DOCS_ENABLE_TEST_CLIENT %}
+    <div id="client">
+       <h3>测试客户端</h3>
+       <form id="api" action="" class="pure-form">
+         <legend>结果将在新窗口中打开. <a target="_blank" href="/facebook/_auth_demo.html">获取jwt token</a></legend>
+         <fieldset class="pure-group">
+           <div class="pure-g">
+             <div class="pure-u-1 pure-u-sm-1-6">
+                 <select name="method" class="pure-u-23-24">
+                   <option value="get">GET</option>
+                   <option value="post">POST</option>
+                   <option value="delete">DELETE</option>
+                 </select>
+             </div>
+             <div class="pure-u-1 pure-u-sm-5-6">
+                <input type="text" name="url" class="pure-u-1" value="" placeholder="URL" />
+            </div>
+          </div>
+         </fieldset>
+         <fieldset class="pure-group">
+           <input type="text" name="jwt-token" class="pure-u-1" value="" placeholder="JWT Token" />
+           <textarea name="data" rows=5 class="pure-u-1" placeholder="data"></textarea>
+         </fieldset>
+         <button type="submit" class="pure-button pure-button-primary">Submit</button>
+
+       </form>
+    </div>
+    {% endif %}
+    <div id="general">
+      <h3>概述</h3>
+      {% for item in topics %}
+      <div id="{{ item.id }}">
+        <h4>{{ item.topic }}</h4>
+        <div>{{ item.desc | safe }}</div>
+      </div>
+      {% endfor %}
+    </div>
+
+    {% for ep in endpoints %}
+      <div class="endpoint" id="{{ ep.endpoint }}">
+        <div class="title">
+          <h2>{{ ep.endpoint }} <a class="headerlink" href="#{{ ep.endpoint }}">¶</a></h2>
+          <h3>{{ '/'.join(ep.methods) }} {{ ep.rule }}</h3>
+        </div>
+        <div class="docs">
+          {% if ep.docs.desc %}
+            {{ ep.docs.desc | safe }}
+          {% endif %}
+          {% if ep.docs.headers %}
+          <div class="headers">
+            <h4>headers:</h4>
+            {{ _render_fields(ep.docs.headers, False) }}
+          </div>
+          {% endif %}
+          {% if ep.docs.params %}
+          <div class="params">
+            <h4>params:</h4>
+            {{ _render_fields(ep.docs.params) }}
+          </div>
+          {% endif %}
+          {% if ep.docs.returns %}
+          <div class="returns">
+            <h4>returns {% if ep.docs.returns.many %}a list of {{ ep.docs.returns.model }}{% else %}a {{ ep.docs.returns.model }}{% endif %}:</h4>
+            {{ _render_fields(ep.docs.returns.fields) }}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <script charset="utf-8">
+    var $api = $("#api");
+    $api.submit(function (e) {
+      e.preventDefault()
+      var data = $api.serializeArray().reduce(function(obj, item) {
+        obj[item.name] = item.value;
+        return obj;
+      }, {});
+      if (!data['url']) {
+        console.error("URL cannot be empty!")
+      }
+      var ajaxSettings = {
+        method: data.method,
+        dataType: 'html',
+        contentType: 'application/json',
+      };
+      if (data['jwt-token']) {
+        ajaxSettings.headers = {
+          Authorization: 'Bearer ' + data['jwt-token']
+        };
+      }
+      if (data['data']) {
+        ajaxSettings.data = data['data'];
+      }
+      var win = window.open('', 'Panda 365 Test Client');
+      win.document.open();
+
+      $.ajax(data.url, ajaxSettings)
+        .done(function(data, status, xhr) {
+          win.document.write(data);
+        })
+        .fail(function(xhr, text, error) {
+          win.document.write(xhr.responseText);
+        })
+        .always(function() {
+          win.document.close()
+        })
+    })    
+  </script>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+{% extends "admin/model/create.html" %}
+
+{% block body %}
+<h2>
+创建
+{% if admin_view.country %}
+{{ admin_view.country.admin_label }}{{ admin_view.name}}
+{% else %}
+{{ admin_view.name }}
+{% endif %}
+</h2>
+{{ super() }}
+{% endblock %}

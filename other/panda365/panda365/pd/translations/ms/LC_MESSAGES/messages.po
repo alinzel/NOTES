@@ -1,0 +1,182 @@
+# Malay translations for panda365.
+# Copyright (C) 2017 ORGANIZATION
+# This file is distributed under the same license as the panda365 project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: panda365 VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2017-07-31 14:06+0800\n"
+"PO-Revision-Date: 2017-06-27 12:26+0800\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ms\n"
+"Language-Team: ms <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.4.0\n"
+
+msgid "Not a valid datetime value"
+msgstr ""
+
+msgid "locale"
+msgstr ""
+
+msgid "content"
+msgstr ""
+
+msgid "translation for each locale can only be given once"
+msgstr ""
+
+msgid "payment_pending"
+msgstr ""
+
+msgid "payment_processing"
+msgstr ""
+
+msgid "payment_failed"
+msgstr ""
+
+msgid "paid"
+msgstr ""
+
+msgid "proccessing"
+msgstr ""
+
+msgid "shipped"
+msgstr ""
+
+msgid "canceled"
+msgstr ""
+
+msgid "1.What is goup buy?"
+msgstr "Apa itu pembelian kumpulan ?"
+
+msgid "Goup buy is an activity that multiple people place orders together to get a lower discount than normal online shopping for a spcific product."
+msgstr "Pembelian kumpulan adalah aktiviti yang banyak orang membuat pesanan bersama untuk mendapatkan diskaun yang lebih rendah untuk produk tertentu."
+
+msgid "2. How to buy?"
+msgstr "2.Cara Beli?"
+
+msgid ""
+"1. Select the product, click \"\"buy\"\" and then select the specification.\n"
+"                2. Fill your delivery address.\n"
+"                3. Select payment methord and finish payment for your order.\n"
+"                4. Waiting for other buyers to attend the acitivity.\n"
+"                5. The goup buy will be completed when the number of buyers reach the required number within a limited time."
+msgstr "1. Pilih produk, klik "beli" dan kemudian pilih spesifikasi.
+2. Isikan alamat penghantaran anda.
+3. Pilih methord pembayaran dan tamatkan pembayaran untuk pesanan anda.
+4. Menunggu pembeli lain untuk menghadiri kesadaran.
+5. Pembelian kumpulan akan selesai apabila bilangan pembeli mencapai bilangan yang diperlukan dalam masa yang terhad. "
+
+msgid "3. What is a successful goup buy?"
+msgstr "Bagaimana dianggap pembelian kumpulan itu berjaya?"
+
+msgid "You will enjoy the goup buy price within a limit time. The goup buy will be complete when the number of buyers reach the required number."
+msgstr "Anda akan menikmati harga beli kumpulan dalam masa yang terhad. Pembelian kumpulan akan lengkap apabila jumlah pembeli mencapai bilangan yang diperlukan."
+
+msgid "4. How to refund if the goup buy failed?"
+msgstr "4.Bagaimana untuk membayar balik jika pembelian kumpulan gagal?"
+
+msgid "The goup buy will be failed if the number of buyers didn't reach the required number within the specific time, the customer service will contact you to refund for you."
+msgstr "Pembelian kumpulan akan gagal jika bilangan pembeli tidak mencapai bilangan yang diperlukan dalam masa tertentu, perkhidmatan pelanggan akan menghubungi anda untuk membayar balik untuk anda."
+
+msgid "It's quite cheap and I want to buy it, will you? "
+msgstr "Ia agak murah dan saya mahu membelinya, anda nak tak?"
+
+msgid "Goup-buy price"
+msgstr "Harga pembelian kumpulan"
+
+#, python-format
+msgid "%(num)s sold"
+msgstr "dijual"
+
+msgid "CountDown"
+msgstr "Mbilg dr hjg mis"
+
+msgid "Days"
+msgstr "hari"
+
+msgid "Hours"
+msgstr "Jam"
+
+msgid "Minutes"
+msgstr "Minit"
+
+msgid "Seconds"
+msgstr "kedua"
+
+msgid "Time-limited group buy"
+msgstr "Beli kumpulan terhad masa"
+
+msgid "Round"
+msgstr "Pusingan"
+
+msgid "people attended"
+msgstr "orang yang hadir"
+
+msgid "left"
+msgstr "saja"
+
+msgid "Only"
+msgstr "Hany"
+
+msgid "How to play"
+msgstr "Cara Beli "
+
+msgid "Detail"
+msgstr "Butir"
+
+msgid "Select the product and make payment. It will be completed once the number of buyers reached the required number."
+msgstr "Pilih produk dan buat pembayaran. Ia akan siap sebaik sahaja bilangan pembeli mencapai."
+
+msgid "Product Detail"
+msgstr "Maklumat produk"
+
+msgid "Join"
+msgstr "Menyertai"
+
+msgid "Order {}"
+msgstr ""
+
+msgid "Share goods I like"
+msgstr "Kongsi barang-barang yang saya suka"
+
+#, python-format
+msgid "Help this product get %(num)s shares, then you can order it."
+msgstr "Bantu produk ini mendapat %(num)s saham, maka anda boleh memesannya."
+
+msgid "Proposed price"
+msgstr "Harga rujukan"
+
+#, python-format
+msgid "%(num)s left"
+msgstr "Baki %(num)s"
+
+msgid "band_style"
+msgstr ""
+
+msgid "Goup buy is an activity that multiple people place orders together to get a lower discount than normal online shopping for a spcific product."
+msgstr "Pembelian kumpulan adalah aktiviti yang banyak orang membuat pesanan bersama untuk mendapatkan diskaun yang lebih rendah untuk produk tertentu"
+
+msgid "howto"
+msgstr "Cara Beli"
+
+msgid "1. Select the product, click \"buy\" and then select the specification"
+msgstr "1. Pilih produk, klik \"beli\" dan kemudian pilih spesifikasi"
+
+msgid "3. What is a successful goup buy?"
+msgstr "Bagaimana dianggap pembelian kumpulan itu berjaya?"
+
+msgid "You will enjoy the goup buy price within a limit time. The goup buy will be complete when the number of buyers reach the required number."
+msgstr "Anda akan menikmati harga beli kumpulan dalam masa yang terhad. Pembelian kumpulan akan lengkap apabila jumlah pembeli mencapai bilangan yang diperlukan."
+
+msgid "4. How to refund if the goup buy failed?"
+msgstr "Bagaimana untuk membayar balik jika pembelian kumpulan gagal?"
+
+msgid "The goup buy will be failed if the number of buyers didn't reach the required number within the specific time, the customer service will contact you to refund for you."
+msgstr "Pembelian kumpulan akan gagal jika bilangan pembeli tidak mencapai bilangan yang diperlukan dalam masa tertentu, perkhidmatan pelanggan akan menghubungi anda untuk membayar balik untuk anda."
+

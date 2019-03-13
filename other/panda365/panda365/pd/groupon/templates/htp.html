@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>How to play</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <style>
+        body, div, p, a, ul, li, h1, h2, h3, h4, h5, h6, pre, img {
+            margin: 0;
+            padding: 0;
+        }
+
+        @media (max-width: 500px) {
+            body {
+                background-color: #ececf3;
+                font-family:opensans,"Helvetica Neue",Helvetica,Helvetica,Arial,sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+            main{
+                width:100%;
+                margin:0 auto;
+                background-color:#ffffff;
+                height:100%;
+            }
+            article{
+                background-color:#fff;
+                overflow: hidden;
+                margin-top: 36px;
+            }
+            .return{
+                left: 14px;;
+            }
+            .text_title{
+                background-color: #ff96ae;
+                width: 100%;
+                height: 40px;
+                position:fixed;
+                font-size: 18px;
+                color: #ffffff;
+                text-align: center;
+                line-height: 40px;
+                top:0;
+            }
+
+            .question{
+                height: 52px;
+                width: 100%;
+                line-height: 52px;
+                color: #333;
+                font-size: 16px;
+                margin-left: 10px;
+            }
+            .answer{
+                font-size: 14px;
+                color: #999;
+                padding-left: 10px;
+                padding-top: 10px;
+                padding-right: 10px;
+                padding-bottom: 5px;
+                background-color: #f6f6f7;
+            }
+
+        }
+
+
+        @media (min-width: 500px) {
+            body {
+                background-color: rgb(229,229,229);
+                font-family:opensans,"Helvetica Neue",Helvetica,Helvetica,Arial,sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+            main{
+                width:650px;
+                margin:0 auto;
+                background-color:#fff;
+            }
+            article{
+                background-color:#fff;
+                overflow: hidden;
+                margin-top: 67px;
+            }
+            .return{
+                left: 24px;
+            }
+            .text_title{
+                background-color: #ff96ae;
+                width: 650px;
+                height: 67px;
+                margin: 0 auto;
+                position:fixed;
+                top:0;
+                font-size: 31px;
+                color: #ffffff;
+                text-align: center;
+                line-height: 67px;
+            }
+
+            .question{
+                height: 86px;
+                width: 650px;
+                line-height: 86px;
+                color: #333;
+                font-size: 27px;
+                margin-left: 17px;
+            }
+            .answer{
+                font-size: 24px;
+                color: #999;
+                padding-left: 18px;
+                padding-top: 17px;
+                padding-right: 18px;
+                padding-bottom: 9px;
+                background-color: #f6f6f7;
+            }
+        }
+
+    </style>
+    <script>
+        function game() {
+            <!--window.location.replace('new_detail.html')-->
+            window.history.go(-1);
+        }
+
+    </script>
+
+</head>
+<body>
+<main>
+    <header class="text_title">
+        <div class="font_title text_title">
+            {% trans %}How to buy{% endtrans %}
+        </div>
+        <p style="position:absolute;" class="return" onclick="game()"> < </p>
+    </header>
+
+    <article>
+        <div class="question">{% trans %}1.What is goup buy?{% endtrans %}</div>
+        <!--What is goup buy?-->
+        <div class="answer">{% trans %}Goup buy is an activity that multiple people place orders together to get a lower
+            discount than normal online shopping for a spcific product.{% endtrans %}
+        </div>
+        <!--Goup buy is an activity that multiple people place orders together to get a lower discount than normal online shopping for a spcific product.-->
+        <div class="question">{% trans %}2. How to buy?{% endtrans %}</div>
+        <!--2. How to play?-->
+        <div class="answer">{% trans %}1. Select the product, click "buy" and then select the specification.{% endtrans %}<br/>
+            {% trans %}2. Fill your delivery address.{% endtrans %}<br/>
+            {% trans %}3. Select payment methord and finish payment for your order.{% endtrans %}<br/>
+            {% trans %}4. Waiting for other buyers to attend the acitivity.{% endtrans %}<br/>
+            {% trans %}5. The group buy will be completed when the number of buyers reach the required number within a limited
+            time.{% endtrans %}
+        </div>
+        <!--1. Select the product, click ""buy"" and then select the specification.
+            2. Fill your delivery address.
+            3. Select payment methord and finish payment for your order.
+            4. Waiting for other buyers to attend the acitivity.
+            5. The goup buy will be completed when the number of buyers reach the required number within a limited time.-->
+        <div class="question">{% trans %}3. What is a successful goup buy?{% endtrans %}</div>
+        <!--3. What is a successful goup buy?-->
+        <div class="answer">{% trans %}You will enjoy the goup buy price within a limit time. The goup buy will be
+            complete when the number of buyers reach the required number.{% endtrans %}
+        </div>
+        <!--You will enjoy the goup buy price within a limit time. The goup buy will be complete when the number of buyers reach the required number.-->
+        <div class="question">{% trans %}4. How to refund if the goup buy failed?{% endtrans %}</div>
+        <!--4. How to refund if the goup buy failed?-->
+        <div class="answer">{% trans %}The goup buy will be failed if the number of buyers didn't reach the required
+            number within the specific time, the customer service will contact you to refund for you.{% endtrans %}
+        </div>
+        <!--The goup buy will be failed if the number of buyers didn't reach the required number within the specific time, the customer service will contact you to refund for you.-->
+    </article>
+</main>
+</body>
+</html>

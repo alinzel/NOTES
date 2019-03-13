@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript导航树-GSP+专题导航树</title>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js"></script>
+    <style type="text/css">
+        <!--
+        #navigation {
+            font-family: Microsoft yahei;
+            border-right: 1px solid #ccc;
+            border-left: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            font-size: 14px;
+            background-color: #f4f4f4;
+        }
+
+        #navigation ul {
+            list-style-type: none;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #navigation a {
+            display: block;
+            text-decoration: none;
+        }
+
+        #navigation li {
+            border-top: 1px solid #ccc;
+        }
+
+        #navigation a.oneLayer {
+            padding: 3px 3px 3px 0.5em;
+        }
+
+        #navigation a.twoLayer {
+            padding: 3px 3px 3px 2em;
+        }
+
+        #navigation a.threeLayer {
+            padding: 3px 3px 3px 3em;
+        }
+
+        #navigation a.fourLayer {
+            padding: 3px 3px 3px 4em;
+        }
+
+        #navigation a:link,
+        a:visited {
+            background-color: #f4f4f4;
+            color: #0088cc;
+        }
+
+        #navigation a:hover {
+            background-color: #ccc;
+            color: #000;
+        }
+
+        .arrow {
+            width: 0;
+            height: 0;
+            border: 6px solid transparent;
+            border-left-color: #0088cc;
+            display: inline-block;
+            * position: absolute;
+            * margin-top: 3px;
+            margin-left: -2px;
+            font-size: 1px;
+            line-height: 0
+        }
+
+        .myActivedNode a {
+            background-color: #0088cc !important;
+            color: #ffffff !important;
+        }
+        -->
+    </style>
+    <script language="javascript">
+        function myClick() {
+            //this 点选的<a>
+            //上级UL节点
+            var myParentUL = $(this).parent().parent();
+            var myFlag = myParentUL.attr("flag");
+            //下级UL节点
+            var myNextUL = $(this).next();
+            var myNextFlag = myNextUL.attr("flag");
+            //上级LI节点
+            var myPrevLI = $(this).parent();
+            var myPrevLIId = myPrevLI.attr("id");
+
+            if (myNextFlag == 0) {
+                //alert("flag " + myFlag);
+                myNextUL.toggle();
+                myNextUL.attr("flag", "1");
+                //$(this).find("span").attr("class","arrowOpen");
+                //节点ID写入cookie
+            } else if (myNextFlag == 1) {
+                //alert("flag" + myFlag);
+                myNextUL.toggle();
+                myNextUL.attr("flag", "0");
+                //$(this).find("span").attr("class","arrow");
+                //关闭所有子节点
+                var muSonUL = myNextUL.find("ul");
+                muSonUL.hide();
+                muSonUL.attr("flag", "0");
+                myParentUL.find("span").attr("class", "arrow");
+            }
+
+        }
+        function openPage() {
+
+            $("#navigation ul").attr("flag", "0");//添加属性flag,表示节点是否展开
+            $("#navigation").find("a").click(myClick);//添加单击事件
+            $("#navigation li:has(ul)").find("ul").hide();//页面加载时所有菜单默认为折叠
+
+        }
+        $(document).ready(openPage);
+    </script>
+
+</head>
+
+<body>
+    <div id="navigation">
+        <ul id="listUL" style="display:block">
+            <li ><a class="oneLayer" href="###"><span class="arrow">&nbsp;</span>开发规范</a>
+                <ul>
+                    <li ><a class="twoLayer" href="http://数据库设计规范">数据库设计规范</a></li>
+                    <li ><a class="twoLayer" href="http://数据对象使用规范">数据对象使用规范</a></li>
+                    <li ><a class="twoLayer" href="http://数据模型使用规范">数据模型使用规范</a></li>
+                    <li ><a class="twoLayer" href="http://元数据命名规范">元数据命名规范</a></li>
+                </ul>
+            </li>
+             <li ><a class="oneLayer" href="###"><span class="arrow">&nbsp;</span>开发规范</a>
+                <ul>
+                    <li ><a class="twoLayer" href="http://数据库设计规范">数据库设计规范</a></li>
+                    <li ><a class="twoLayer" href="http://数据对象使用规范">数据对象使用规范</a></li>
+                    <li ><a class="twoLayer" href="http://数据模型使用规范">数据模型使用规范</a></li>
+                    <li ><a class="twoLayer" href="http://元数据命名规范">元数据命名规范</a></li>
+                </ul>
+            </li>
+             <li ><a class="oneLayer" href="###"><span class="arrow">&nbsp;</span>开发规范</a>
+                <ul>
+                    <li ><a class="twoLayer" href="http://数据库设计规范">数据库设计规范</a></li>
+                    <li ><a class="twoLayer" href="http://数据对象使用规范">数据对象使用规范</a></li>
+                    <li ><a class="twoLayer" href="http://数据模型使用规范">数据模型使用规范</a></li>
+                    <li ><a class="twoLayer" href="http://元数据命名规范">元数据命名规范</a></li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+</body>
+</html>

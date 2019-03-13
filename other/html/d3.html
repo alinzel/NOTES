@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Tree Example</title>
+
+    <style>
+
+	.node {
+		cursor: pointer;
+	}
+
+	.node circle {
+	  fill: #fff;
+	  stroke: steelblue;
+	  stroke-width: 3px;
+	}
+
+	.node text {
+	  font: 12px sans-serif;
+	}
+
+	.link {
+	  fill: none;
+	  stroke: #ccc;
+	  stroke-width: 2px;
+	}
+
+    </style>
+
+  </head>
+
+  <body>
+
+<!-- load the d3.js library -->
+<script src="http://d3js.org/d3.v3.min.js"></script>
+
+<script>
+
+var treeData =
+  [{"name": "DARPA", "children": [{"name": "Strategic Technology Office (STO)", "children": [{"name": "\u9879\u76ee", "children": [{"name": "Integrated Sensor is Structure"}, {"name": "Chemical Reconnaissance"}, {"name": "Military Imaging and Surveillance Technology"}, {"name": "Mobile Hotspots"}, {"name": "Mobile Offboard Clandestine Communications and Approach"}, {"name": "Multifunction RF"}, {"name": "Ocean of Things"}, {"name": "Transmit and Receive Optimized Photonics"}, {"name": "Advanced RF Mapping"}, {"name": "Aerial Dragnet"}, {"name": "\u70b9\u51fb\u663e\u793a\u66f4\u591a"}]}, {"name": "\u4eba\u5458", "children": [{"name": "Ms. Khine Latt"}, {"name": "Dr. Brent Appleby"}, {"name": "Mr. Stephen Griggs"}, {"name": "Dr. Joseph B. Evans"}, {"name": "Mr. Shelby Sullivan"}, {"name": "Dr. John Gorman"}, {"name": "Mr. John Waterston"}, {"name": "Dr. Ted Woodward"}, {"name": "Dr. Joseph B. Evans"}, {"name": "Mr. John Waterston"}, {"name": "\u70b9\u51fb\u663e\u793a\u66f4\u591a"}]}]}, {"name": "Biological Technologies Office (BTO)", "children": [{"name": "\u9879\u76ee", "children": [{"name": "Outpacing Infectious Disease"}, {"name": "Neural Engineering System Design"}, {"name": "Neuro Function, Activity, Structure, and Technology"}, {"name": "Pandemic Prevention Platform"}, {"name": "Pathogen Predators"}, {"name": "Autonomous Diagnostics to Enable Prevention and Therapeutics"}, {"name": "Advanced Plant Technologies"}, {"name": "Dialysis-Like Therapeutics"}, {"name": "Biological Robustness in Complex Settings"}, {"name": "Revolutionizing Prosthetics"}, {"name": "\u70b9\u51fb\u663e\u793a\u66f4\u591a"}]}, {"name": "\u4eba\u5458", "children": [{"name": "Lt Col Daniel J. Wattendorf, M.D., USAF"}, {"name": "Dr. Al Emondi"}, {"name": "Dr. Justin Sanchez"}, {"name": "COL Matthew Hepburn, MC, USA"}, {"name": "Dr. Brad Ringeisen"}, {"name": "COL Matthew Hepburn, MC, USA"}, {"name": "Dr. Blake Bextine"}, {"name": "COL Matthew Hepburn, MC, USA"}, {"name": "Dr. Justin Gallivan"}, {"name": "Dr. Justin Sanchez"}, {"name": "\u70b9\u51fb\u663e\u793a\u66f4\u591a"}]}]}, {"name": "Defense Sciences Office (DSO)", "children": [{"name": "\u9879\u76ee", "children": [{"name": "SAFER"}, {"name": "Lagrange"}, {"name": "Fundamentals of Complex Collectives"}, {"name": "Fundamental Limits of Photon Detection"}, {"name": "Make-It"}, {"name": "Materials Development for Platforms"}, {"name": "Materials for Transduction"}, {"name": "Models, Dynamics and Learning"}, {"name": "Molecular Informatics"}, {"name": "Next Generation Social Science"}, {"name": "\u70b9\u51fb\u663e\u793a\u66f4\u591a"}]}, {"name": "\u4eba\u5458", "children": [{"name": "Major C. David Lewis"}, {"name": "Dr. Jim Gimlett"}, {"name": "Dr. Prem Kumar"}, {"name": "Dr. Anne Fischer"}, {"name": "Dr. Jan Vandenbrande"}, {"name": "Dr. Jim Gimlett"}, {"name": "Dr. Jan Vandenbrande"}, {"name": "Dr. Anne Fischer"}, {"name": "Dr. Adam Russell"}, {"name": "\u70b9\u51fb\u663e\u793a\u66f4\u591a"}]}]}, {"name": "Information Innovation Office (I2O)", "children": [{"name": "\u9879\u76ee", "children": [{"name": "Crowd Sourced Formal Verification"}, {"name": "Media Forensics"}, {"name": "Data-Driven Discovery of Models"}, {"name": "Probabilistic Programming for Advancing Machine Learning"}, {"name": "Strategic Social Interaction Modules"}, {"name": "Causal Exploration of Complex Operational Environments"}, {"name": "Memex"}, {"name": "Mining and Understanding Software Enclaves"}, {"name": "Mission-oriented Resilient Clouds"}, {"name": "Modeling Adversarial Activity"}, {"name": "\u70b9\u51fb\u663e\u793a\u66f4\u591a"}]}, {"name": "\u4eba\u5458", "children": [{"name": "Dr. Michael Hsieh"}, {"name": "Mr. David Gunning"}, {"name": "Mr. Wade Shen"}, {"name": "Dr. Jennifer Roberts"}, {"name": "Dr. Brian Lande"}, {"name": "Mr. Steve Jameson"}, {"name": "Mr. Wade Shen"}, {"name": "Dr. Sandeep Neema"}, {"name": "Dr. Jonathan M. Smith"}, {"name": "Dr. Carey Schwartz"}, {"name": "\u70b9\u51fb\u663e\u793a\u66f4\u591a"}]}]}, {"name": "Microsystems Technology Office (MTO)", "children": [{"name": "\u9879\u76ee", "children": [{"name": "Millimeter Wave Digital Arrays"}, {"name": "Thermal Management Technologies"}, {"name": "Advanced Wide FOV Architectures for Image Reconstruction & Exploitation"}, {"name": "Common Heterogeneous integration & IP reuse Strategies"}, {"name": "Direct On-Chip Digital Optical Synthesis"}, {"name": "Direct Sampling Digital Receiver"}, {"name": "Diverse & Accessible Heterogeneous Integration"}, {"name": "Gratings of Regular Arrays and Trim Exposures"}, {"name": "EXCALIBUR"}, {"name": "Gratings of Regular Arrays and Trim Exposures"}, {"name": "\u70b9\u51fb\u663e\u793a\u66f4\u591a"}]}, {"name": "\u4eba\u5458", "children": [{"name": "Dr. Timothy Hancock"}, {"name": "Dr. Ken Plaks"}, {"name": "Dr. Dev Palmer"}, {"name": "Mr. Andreas Olofsson"}, {"name": "Dr. Gordon Keeler"}, {"name": "Dr. Timothy Hancock"}, {"name": "Dr. Timothy Hancock"}, {"name": "Dr. Michael Fritze"}, {"name": "Dr. Joseph Mangano"}, {"name": "Dr. Carl  McCants"}, {"name": "\u70b9\u51fb\u663e\u793a\u66f4\u591a"}]}]}, {"name": "Aerospace Projects Office (APO)", "children": [{"name": "\u9879\u76ee", "children": []}, {"name": "\u4eba\u5458", "children": []}]}, {"name": "Adaptive Execution Office (AEO)", "children": [{"name": "\u9879\u76ee", "children": [{"name": "Crosshairs"}, {"name": "Helicopter ALert and Threat Termination"}]}, {"name": "\u4eba\u5458", "children": [{"name": "MAJ Brian Wallace"}, {"name": "MAJ Brian Wallace"}]}]}, {"name": "Mission Services Office (MSO)", "children": [{"name": "\u9879\u76ee", "children": []}, {"name": "\u4eba\u5458", "children": []}]}, {"name": "Strategic Resources Office (SRO)", "children": [{"name": "\u9879\u76ee", "children": [{"name": "Multipath Exploitation Radar"}]}, {"name": "\u4eba\u5458", "children": [{"name": "Dr. Joseph Durek"}]}]}, {"name": "Tactical Technology Office (TTO)", "children": [{"name": "\u9879\u76ee", "children": [{"name": "Vulture"}, {"name": "VTOL (Vertical Take-Off and Landing) X-Plane"}, {"name": "Phoenix"}, {"name": "Triple Target Terminator"}, {"name": "Tactically Exploited Reconnaissance Node"}, {"name": "Tactical Boost Glide"}, {"name": "Persistent Close Air Support"}, {"name": "Long Range Anti-Ship Missile Demonstration"}, {"name": "Hypersonic Air-breathing Weapon Concept"}, {"name": "Radar Net"}, {"name": "\u70b9\u51fb\u663e\u793a\u66f4\u591a"}]}, {"name": "\u4eba\u5458", "children": [{"name": "Mr. Dan Newman"}, {"name": "Dr. Mark Costello"}, {"name": "Mr. Todd Master"}, {"name": "Stephen Waller"}, {"name": "Dr. Daniel Patt"}, {"name": "Dr. Peter Erbland"}, {"name": "Stephen Waller"}, {"name": "Robert McHenry"}, {"name": "Mr. Mark Gustafson"}, {"name": "Lindsay Demoore Millard"}, {"name": "\u70b9\u51fb\u663e\u793a\u66f4\u591a"}]}]}, {"name": "Information Processing Techniques Office (IPTO)", "children": [{"name": "\u9879\u76ee", "children": [{"name": "Advanced Soldier Sensor Information System and Technology"}, {"name": "Bootstrapped Learning"}, {"name": "Integrated Learning"}, {"name": "Integrated Learning"}, {"name": "Personalized Assistant that Learns"}, {"name": "Personalized Assistant that Learns"}]}, {"name": "\u4eba\u5458", "children": [{"name": "Dr. Mari Maeda"}, {"name": "Dr. Daniel Oblinger"}, {"name": "Dr. Todd Hughes"}, {"name": "Dr. Tom Wagner"}, {"name": "Dr. Robert Kohout"}, {"name": "Mr. David Gunning"}]}]}, {"name": "LRASM Deployment Office", "children": [{"name": "\u9879\u76ee", "children": []}, {"name": "\u4eba\u5458", "children": []}]}, {"name": "Software and Intelligent Systems Technology Office\uff08SISTO\uff09", "children": [{"name": "\u9879\u76ee", "children": []}, {"name": "\u4eba\u5458", "children": []}]}, {"name": "Information Technology Office\uff08ITO\uff09", "children": [{"name": "\u9879\u76ee", "children": []}, {"name": "\u4eba\u5458", "children": []}]}]}];
+
+
+// ************** Generate the tree diagram	 *****************
+var margin = {top: 20, right: 120, bottom: 20, left: 120},
+	width = 960 - margin.right - margin.left,
+	height = 500 - margin.top - margin.bottom;
+
+var i = 0,
+	duration = 750,
+	root;
+
+var tree = d3.layout.tree()
+	.size([height, width]);
+
+var diagonal = d3.svg.diagonal()
+	.projection(function(d) { return [d.y, d.x]; });
+
+var svg = d3.select("body").append("svg")
+	.attr("width", width + margin.right + margin.left)
+	.attr("height", height + margin.top + margin.bottom)
+    .append("g")
+	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+root = treeData[0];
+root.x0 = height / 2;
+root.y0 = 0;
+
+update(root);
+
+function update(source) {
+
+  // Compute the new tree layout.
+  var nodes = tree.nodes(root).reverse(),
+	  links = tree.links(nodes);
+
+  // Normalize for fixed-depth.
+  var nodeMap = {};
+  nodes.forEach(function(d) {
+    if (!nodeMap[d.depth] || d.x < nodeMap[d.depth]){
+      nodeMap[d.depth] = d.x;
+    }
+  });
+  nodes.forEach(function(d) {
+    d.y = d.depth * 100;
+    d.x -= nodeMap[d.depth];
+  });
+
+  // Update the nodes…
+  var node = svg.selectAll("g.node")
+	  .data(nodes, function(d) { return d.id || (d.id = ++i); });
+
+  // Enter any new nodes at the parent's previous position.
+  var nodeEnter = node.enter().append("g")
+	  .attr("class", "node")
+	  .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
+	  .on("click", click);
+
+  nodeEnter.append("circle")
+	  .attr("r", 1e-6)
+	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+  nodeEnter.append("text")
+	  .attr("x", function(d) { return d.children || d._children ? -13 : 13; })
+	  .attr("dy", ".35em")
+	  .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
+	  .text(function(d) { return d.name; })
+	  .style("fill-opacity", 1e-6);
+
+  // Transition nodes to their new position.
+  var nodeUpdate = node.transition()
+	  .duration(duration)
+	  .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
+
+  nodeUpdate.select("circle")
+	  .attr("r", 10)
+	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+  nodeUpdate.select("text")
+	  .style("fill-opacity", 1);
+
+  // Transition exiting nodes to the parent's new position.
+  var nodeExit = node.exit().transition()
+	  .duration(duration)
+	  .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
+	  .remove();
+
+  nodeExit.select("circle")
+	  .attr("r", 1e-6);
+
+  nodeExit.select("text")
+	  .style("fill-opacity", 1e-6);
+
+  // Update the links…
+  var link = svg.selectAll("path.link")
+	  .data(links, function(d) { return d.target.id; });
+
+  // Enter any new links at the parent's previous position.
+  link.enter().insert("path", "g")
+	  .attr("class", "link")
+	  .attr("d", function(d) {
+		var o = {x: source.x0, y: source.y0};
+		return diagonal({source: o, target: o});
+	  });
+
+  // Transition links to their new position.
+  link.transition()
+	  .duration(duration)
+	  .attr("d", diagonal);
+
+  // Transition exiting nodes to the parent's new position.
+  link.exit().transition()
+	  .duration(duration)
+	  .attr("d", function(d) {
+		var o = {x: source.x, y: source.y};
+		return diagonal({source: o, target: o});
+	  })
+	  .remove();
+
+  // Stash the old positions for transition.
+  nodes.forEach(function(d) {
+	d.x0 = d.x;
+	d.y0 = d.y;
+  });
+}
+
+// Toggle children on click.
+function click(d) {
+  if (d.children) {
+	d._children = d.children;
+	d.children = null;
+  } else {
+	d.children = d._children;
+	d._children = null;
+  }
+  update(d);
+}
+
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,164 @@
+# Chinese (Simplified, China) translations for panda365.
+# Copyright (C) 2017 ORGANIZATION
+# This file is distributed under the same license as the panda365 project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: panda365 VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2017-07-31 14:41+0800\n"
+"PO-Revision-Date: 2017-06-27 12:26+0800\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_Hans_CN\n"
+"Language-Team: zh_Hans_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.4.0\n"
+
+msgid "Not a valid datetime value"
+msgstr ""
+
+msgid "locale"
+msgstr "语言"
+
+msgid "content"
+msgstr "内容"
+
+msgid "translation for each locale can only be given once"
+msgstr "每种语言的翻译只能指定一次"
+
+msgid "payment_pending"
+msgstr ""
+
+msgid "payment_processing"
+msgstr ""
+
+msgid "payment_failed"
+msgstr ""
+
+msgid "paid"
+msgstr ""
+
+msgid "proccessing"
+msgstr ""
+
+msgid "shipped"
+msgstr ""
+
+msgid "canceled"
+msgstr ""
+
+msgid "1.What is goup buy?"
+msgstr "什么是多人拼团？"
+
+msgid "Goup buy is an activity that multiple people place orders together to get a lower discount than normal online shopping for a spcific product."
+msgstr "多人拼团是指有多人一起拼单购买的团购活动，通过拼团买家可以享受比一般网购更低的折扣"
+
+msgid "2. How to buy?"
+msgstr "2.拼团玩法?"
+
+msgid ""
+"1. Select the product, click \"\"buy\"\" and then select the specification.\n"
+"                2. Fill your delivery address.\n"
+"                3. Select payment methord and finish payment for your order.\n"
+"                4. Waiting for other buyers to attend the acitivity.\n"
+"                5. The goup buy will be completed when the number of buyers reach the required number within a limited time."
+msgstr "1.选择商品，点击最低价格购买，选择并确认商品规格
+2.填写收货地址
+3.选择支付方式，完成付款，成功参加团购活动
+4.等待其他买家参团
+5.限定时间内达到人数团购，成功拼团！"
+
+msgid "3. What is a successful goup buy?"
+msgstr "怎么样算拼团成功？"
+
+msgid "You will enjoy the goup buy price within a limit time. The goup buy will be complete when the number of buyers reach the required number."
+msgstr "每个商品的团购价格都有一定的时间限制，在限定时间内，达到一定的参团人数即可算拼团成功。"
+
+msgid "4. How to refund if the goup buy failed?"
+msgstr "4.拼团失败了怎么退款？"
+
+msgid "The goup buy will be failed if the number of buyers didn't reach the required number within the specific time, the customer service will contact you to refund for you."
+msgstr "若限定时间内没有凑齐人数，即算作拼团失败。客服会联系您进行退款。"
+
+msgid "It's quite cheap and I want to buy it, will you? "
+msgstr "我想买这个，还挺便宜的，你来不来"
+
+msgid "Goup-buy price"
+msgstr "团购价格"
+
+#, python-format
+msgid "%(num)s sold"
+msgstr "已售"
+
+msgid "CountDown"
+msgstr "倒计时"
+
+msgid "Days"
+msgstr "天"
+
+msgid "Hours"
+msgstr "时"
+
+msgid "Minutes"
+msgstr "分"
+
+msgid "Seconds"
+msgstr "秒"
+
+msgid "Time-limited group buy"
+msgstr "限时团购"
+
+msgid "Round"
+msgstr "已成团"
+
+msgid "people attended"
+msgstr "个买家已参团"
+
+msgid "left"
+msgstr "人"
+
+msgid "Only"
+msgstr "还"
+
+msgid "How to play"
+msgstr "拼团玩法"
+
+msgid "Detail"
+msgstr "玩法详情"
+
+msgid "Select the product and make payment. It will be completed once the number of buyers reached the required number."
+msgstr "Pilih produk dan buat pembayaran. Ia akan siap sebaik sahaja bilangan pembeli mencapai."
+
+msgid "Product Detail"
+msgstr "商品详情"
+
+msgid "Join"
+msgstr "加入"
+
+msgid "Order {}"
+msgstr ""
+
+msgid "Share goods I like"
+msgstr "分享我喜欢的商品"
+
+#, python-format
+msgid "Help this product get %(num)s shares, then you can order it."
+msgstr "帮助这个产品获得%(num)s次分享，你就可以预订这个商品"
+
+msgid "Proposed price"
+msgstr "参考价格"
+
+#, python-format
+msgid "%(num)s left"
+msgstr "剩余 %(num)s"
+
+msgid "band_style"
+msgstr ""
+
+msgid "1. Select the product, click \"\"buy\"\" and then select the specification"
+msgstr "1.选择商品，点击最低价格购买，选择并确认商品规"
+

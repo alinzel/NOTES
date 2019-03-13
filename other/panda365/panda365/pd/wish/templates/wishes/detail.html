@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Panda365 - {% trans %}Share goods I like{% endtrans %}</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection"> <!--手机号不变色-->
+    <meta property =“og:image” content="{{ wish.media_urls[0] }}"/>
+    <style>
+        .bt10{
+            margin-bottom: 10px;
+        }
+        .top10{
+            margin-top: 10px;
+        }
+        p{
+            margin:0;
+        }
+        .font_title{
+            width: 100%;
+            text-align: center;
+            line-height:40px;
+            color: #ffffff;
+        }
+        .text_title{
+            background-color: #ff96ae;
+            font-size: 17px;
+            width: 100%;
+            height: 40px;
+            margin: 0 auto;
+            position:fixed;
+            top:0;
+        }
+        article{
+            background-color:#fff;
+            padding:0 12px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        #user {
+            margin-top:40px;
+        }
+        #user .icon{
+            /*height:15px;*/
+            /*width:15px;*/
+        }
+        #user .icon img{
+            height:100%;
+            width:100%;
+        }
+        #user .head{
+            height:60px;
+            width:60px;
+            float:left;
+            -webkit-border-radius:50%;
+            -moz-border-radius:50%;
+            border-radius:50%;
+            margin-top:20px;
+        }
+        #user .head img{
+            height:100%;
+            width:100%;
+            margin-left:5px;
+            background-color:#ddd;
+            -webkit-border-radius:50%;
+            -moz-border-radius:50%;
+            border-radius:50%;
+        }
+        #user .head-message{
+            overflow: hidden;
+            margin-top:10px;
+        }
+        #user .message{
+            font-size:14px;
+            color:#333;
+            /*padding:0 10px;*/
+            width:100%;
+            padding-left:75px;
+            box-sizing:border-box;
+            margin-top: 30px;
+
+        }
+
+        #user .top-left{
+            float: left;
+            margin-top: 10px;
+            color:#e8e8f0;
+            font-size:55px;
+
+        }
+        #user .bottom-right{
+            float:right;
+            color: #e8e8f0;
+            font-size:55px;
+            line-height:1;
+            height:20px;
+        }
+
+        #product_discribe .product_discribe{
+            font-size:14px;
+            color:#333;
+            width:100%;
+            clear: both;
+        }
+
+        .interval{
+            height: 10px;
+            width: 100%;
+            background-color: #eeecf3;
+        }
+        #product_discribe{
+            padding-bottom:60px;
+        }
+        #product_discribe .icon_discirbe{
+            width:100%;
+            margin-top: 15px;
+        }
+
+        #product_discribe .product_price{
+            color: #ff96ae;
+            font-size: 18px;
+            float: left;
+            padding-top: 10px;
+        }
+
+        #product_discribe .product_price_discribe{
+            color: #ff96ae;
+            font-size: 12px;
+            /*text-align: center;*/
+            float: left;
+            vertical-align:middle;
+            margin-top: 15px;
+            padding-left: 5px;
+        }
+        #product_discribe .product_left{
+            color: #ff96ae;
+            font-size: 14px;
+            /*text-align: center;*/
+            padding-top: 10px;
+        }
+        #product_discribe .product_attract{
+            font-size: 13px;
+            padding-top: 8px;
+            color: #999999;
+        }
+        .progressbar {
+            height: 8px;
+            width: 100%;
+            background: #ffecf0 ;
+        }
+        @media (max-width: 500px) {
+            body {
+                background-color: #ececf3;
+                font-family:opensans,"Helvetica Neue",Helvetica,Helvetica,Arial,sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+            main{
+                width:100%;
+                margin:0 auto;
+                background-color:#ffffff;
+                height:100%;
+            }
+            #product_discribe .product_down{
+                color: #fff;
+                font-size: 18px;
+                background: #ff96ae;
+                height: 50px;
+                width:100%;
+                line-height:50px;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                text-align: center;
+                /*align-items: center;*/
+            }
+
+        }
+
+
+        @media (min-width: 500px) {
+            body {
+                background-color: rgb(229,229,229);
+                font-family:opensans,"Helvetica Neue",Helvetica,Helvetica,Arial,sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+            main{
+                width:650px;
+                margin:0 auto;
+                background-color:#fff;
+            }
+            #product_discribe .product_down{
+                color: #fff;
+                font-size: 22px;
+                background: #ff96ae;
+                height: 60px;
+                width: 650px;
+                margin: 0 auto;
+                line-height:60px;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                text-align: center;
+                /*align-items: center;*/
+            }
+            .text_title {
+                width:650px;
+            }
+            #user .head{
+                height: 80px;
+                width:80px;
+            }
+            #user .message{
+                padding-left:100px;
+                font-size:18px;
+                margin-top:40px;
+                padding-right:10px;
+            }
+            .text_title{
+                height:50px;
+            }
+            .font_title{
+                line-height:50px;
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId            : '{{ config.FACEBOOK_APP_ID }}',
+          autoLogAppEvents : true,
+          xfbml            : true,
+          version          : 'v2.9'
+        });
+        FB.AppEvents.logPageView();
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+
+
+
+       function download(){
+            FB.AppEvents.logEvent('Vote_click H5 download');
+            location.href='https://play.google.com/store/apps/details?id=com.panda365'
+       }
+    </script>
+
+<main>
+    <header class="text_title">
+      <div class="font_title">
+        {% trans %}Share goods I like{% endtrans %}
+      </div>
+    </header>
+
+    <article id="user">
+        <div class="icon top-left">
+            “
+        </div>
+        <div class="head-message">
+
+            <div class="head">
+                <img src="https://graph.facebook.com/{{ uid }}/picture" alt="">
+            </div>
+            <p class="message">
+              {% trans num=wish.votes_target -%}
+              Help this product get {{ num }} shares, then you can order it.
+              {%- endtrans %}
+            </p>
+        </div>
+        <div class="icon bottom-right">”</div>
+    </article>
+
+    <div class="interval"></div>
+    <article id="product_discribe">
+        <div>
+            <p class="product_discribe top10">{{ wish.message or '' }}</p>
+        </div>
+        <div >
+            <p class="product_price">{{ wish_price.currency.symbol }} {{wish_price.price}} </p>
+            <p class="product_price_discribe">&nbsp;({% trans %}Proposed price{% endtrans %})</p>
+        </div>
+
+        <img src="{{ wish.media_urls[0] }}" class="icon_discirbe">
+        <!--<img src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1497951161&di=d7026d1984ff7697cdaf1c66e55fb0b2&src=http://ww1.sinaimg.cn/large/93ba09afgw1eu93lgdr3cj20ni0i9q4o.jpg" class="icon_discirbe">-->
+        <div class="progressbar">
+            <div style="width:{{ 100 * wish.votes_num / wish.votes_target }}%;background-color: #ff96ae ;height: 8px"></div>
+        </div>
+
+        <div >
+          <p class="product_left">
+            {% trans num=wish.votes_target - wish.votes_num -%}
+            {{ num }} left
+            {%- endtrans %}
+          </p>
+        </div>
+        <div >
+            <p class="product_attract">{{ wish.tip }}</p>
+        </div>
+
+        <div>
+            <p class="product_down" onclick="download()">{% trans %}Join{% endtrans %}</p>
+        </div>
+    </article>
+</main>
+</body>
+</html>
