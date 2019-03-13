@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <!-- 引入react依赖 -->
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>  <!-- react核心库 -->
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script> <!-- 提供与dom相关功能 -->
+    <!--生产环境不建议使用-->
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+
+</head>
+<body>
+<div id="example"></div>
+
+<script type="text/babel">
+    // refs属性，通过操作虚拟DOM来操作真实DOM
+    class App extends React.Component{
+        // 构造方法，继承父组件
+        constructor(props){
+            super(props); // 调用父组件的属性
+            this.handleclick = this.handleclick.bind(this) // 组件中自定义的方法需要强制绑定this
+        }
+        // 自定义组件方法
+        handleclick(){
+            let val = this.refs.val.value;
+            alert(val)
+        }
+
+        handleblur(event){
+            // event当前事件的回调函数，target指向当前事件的对象
+            alert(event.target.value)
+        }
+        render() {
+            return (
+                <div>
+                    <input ref="val" /> {/* 定义ref属性来标识标签，方便操作dom */}
+                    <button onClick={this.handleclick}>点击弹出输入框内容</button>  {/* 绑定点击事件 */}
+                    <input onBlur={this.handleblur} placeholder="失去焦点事件，event回调"/>
+                </div>
+            )
+        }
+    }
+
+    // 渲染
+    ReactDOM.render(<App />,document.getElementById("example") )
+</script>
+
+</body>
+</html>

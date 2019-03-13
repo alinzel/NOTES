@@ -1,0 +1,44 @@
+<!DOCTYPE html >
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>文字超过两行或三行就显示省略号</title>
+    <body>
+<div id="hutia">
+1.即使生气，还是忍不住关心你，这才是真正爱你的人！
+2.爱一个人，其实很简单。他让你流泪，让你失望，尽管这样，他站在那里，你还是会走过去牵他的手，不由自主。
+3.你拿了自己一生的幸福做赌注，要跟着我，你是这个世界上唯一这样信任我的人，我怎么舍得让你输。
+4.女人只会欺负对她好的男人，因为她知道即使他再委屈也不会离开她。一点点语录网
+5.世界上最美妙的一件事，就是当你拥抱一个你爱的人，他竟然把你抱得更紧。
+6.爱你就是，见不到你的时候，心里有好多话想和你说；你在身边时，觉得得静静地靠近你，即使不说话，也很好。
+7.相遇是一种美丽，相识是一种欢心，而相知是一种幸福。
+</div>
+<script type="text/javascript">
+(function(){
+var o = document.getElementById("hutia");
+Subt(o);
+})();
+function Subt(obj){
+var s = obj.innerHTML;
+var p = document.createElement("span");
+var n = document.createElement("a");
+p.innerHTML = s.substring(0,100);
+n.innerHTML = s.length > 100 ? "...展开" : "";
+n.href = "###";
+n.onclick = function(){
+if (n.innerHTML == "...展开"){
+n.innerHTML = "收起";
+p.innerHTML = s;
+}else{
+n.innerHTML = "...展开";
+p.innerHTML = s.substring(0,100);
+}
+}
+obj.innerHTML = "";
+obj.appendChild(p);
+obj.appendChild(n);
+}
+</script>
+</body>
+</html>

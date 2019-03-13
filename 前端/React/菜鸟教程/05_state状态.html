@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+
+<div id="example"></div>
+<script type="text/babel">
+function FormattedDate(props) {
+  return <h2>现在是 {props.date.toLocaleTimeString()}.</h2>;
+}
+
+class Clock extends React.Component {
+  // 构造函数，初始化状态，之后在某处进行调用更新
+  constructor(props) {
+    super(props);
+    this.state = {date: new Date()};
+  }
+
+  // 生命周期钩子函数，在DOM被渲染的时候调用
+  componentDidMount() {
+    this.timerID = setInterval(
+      () => this.tick(), // 箭头函数
+      1000
+    );
+  }
+
+  // 生命周期钩子函数，在DOM被清除的时候调用
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+  // 自定义的方法
+  tick() {
+    this.setState({
+      date: new Date()
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>：react把组件看成一个状态机，只需更新状态值，不需要操作DOM</h1>
+        <FormattedDate date={this.state.date} />
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <Clock />,
+  document.getElementById('example')
+);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <!-- 引入react依赖 -->
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>  <!-- react核心库 -->
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script> <!-- 提供与dom相关功能 -->
+    <!--生产环境不建议使用-->
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+
+</head>
+<body>
+<div id="example"></div>
+
+<script type="text/babel">
+    // 定义主组件
+    class App extends React.Component{
+        // 构造函数
+        constructor(props){
+            super(props);
+            // 初始化数据状态值
+            this.state = {todos:["吃饭","睡觉","打豆豆"]};
+            // 为自定义的方法绑定this
+            this.addmsg = this.addmsg.bind(this)
+        }
+        addmsg(msg){
+            // 同下边的写法
+            // if(msg.trim()){
+            //     let todos = this.state.todos;
+            //     todos.unshift(msg);
+            //     this.setState({
+            //         todos:todos // 同名可以省略
+            //     })
+            // }else {
+            //     alert("不能为空")
+            // }
+            // 判断输入是否合法
+            if(!msg.trim()){
+                alert("输入内容不合法");
+                return // 符合条件退出函数的执行，后面内容不会被执行
+            }
+            let todos = this.state.todos; // 获取状态值
+            todos.unshift(msg); // 向数组中添加数据，unshift添加到第一位，直接修改原数组，返回值为数组长度
+            // 更改状态值
+            this.setState({
+                todos:todos // 同名可以省略
+            })
+        }
+        render(){
+            return(
+                <div>
+                    <h2>props refs state的综合应用</h2>
+                    <Add addmsg={this.addmsg} len={this.state.todos.length} />
+                    <Show todos={this.state.todos}/>
+                </div>
+            )
+        }
+    }
+    // 定义添加功能组件
+    class Add extends React.Component{
+        constructor(props){
+            super(props);
+            this.getmsg = this.getmsg.bind(this)
+        }
+        getmsg(){
+            let msg = this.refs.msg.value; // 获取refs数据
+            this.props.addmsg(msg);
+            this.refs.msg.value = "" // 清空输入框数据
+        }
+        render(){
+            return(
+                <div>
+                    <input ref="msg"/>
+                    <button onClick={this.getmsg}>添加#{this.props.len}</button>
+                </div>
+            )
+        }
+    }
+    // 定义展示数据组件
+    class Show extends React.Component{
+        render(){
+            let {todos} = this.props;
+            return(
+                <ul>
+                    {todos.map((item,index) => {
+                        return <li key={index}>{item}</li>
+                    })}
+                </ul>
+            )
+        }
+    }
+
+    // 渲染组件
+    ReactDOM.render(<App />,document.getElementById("example") )
+</script>
+
+</body>
+</html>

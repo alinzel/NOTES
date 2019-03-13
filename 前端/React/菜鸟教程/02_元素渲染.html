@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+
+<div id="example"></div>
+<div id="example1"></div>
+<div id="example2"></div>
+<div id="example3"></div>
+<script type="text/babel">
+// 渲染元素
+const element =<h1>通过ReactDOM.render()进行元素渲染。</h1>;
+ReactDOM.render(
+    element,
+    document.getElementById('example')
+);
+
+// 更新元素
+function tick() {
+  const element = (
+    <div>
+      <h1>React 元素都是不可变的。当元素被创建之后，你是无法改变其内容或属性的。
+
+目前更新界面的唯一办法是创建一个新的元素，然后将它传入 ReactDOM.render() 方法：</h1>
+      <h2>现在是 {new Date().toLocaleTimeString()}.</h2>
+    </div>
+  );
+  ReactDOM.render(
+    element,
+    document.getElementById('example1')
+  );
+}
+setInterval(tick, 1000);
+
+// 将要展示的部分封装起来，函数式， 函数调用<函数名 date={参数值}/>
+function Clock(props) {
+  return (
+    <div>
+      <h1>将展示的部分封装成一个函数</h1>
+      <h2>现在是 {props.date.toLocaleTimeString()}.</h2>
+    </div>
+  );
+}
+
+function tick1() {
+  ReactDOM.render(
+    <Clock date={new Date()} />,
+    document.getElementById('example2')
+  );
+}
+
+setInterval(tick1, 1000);
+
+// 创建一个 React.Component 的 ES6 类，该类封装了要展示的元素，需要注意的是在 render() 方法中，需要使用 this修饰参数
+class Clock1 extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>创建一个 React.Component 的 ES6 类，该类封装了要展示的元素，需要注意的是在 render() 方法中，需要使用 this修饰参数</h1>
+        <h2>现在是 {this.props.date.toLocaleTimeString()}.</h2>
+      </div>
+    );
+  }
+}
+
+function tick2() {
+  ReactDOM.render(
+    <Clock1 date={new Date()} />,
+    document.getElementById('example3')
+  );
+}
+
+setInterval(tick2, 1000);
+</script>
+
+</body>
+</html>

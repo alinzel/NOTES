@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <!-- 引入react依赖 -->
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>  <!-- react核心库 -->
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script> <!-- 提供与dom相关功能 -->
+    <!--生产环境不建议使用-->
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+
+</head>
+<body>
+<div id="example"></div>
+
+<script type="text/babel">
+    // 组件的嵌套
+    // 定义外部组件
+    class App extends React.Component{
+        render(){
+            let arr = this.props.arr;
+            return(
+                <div>
+                    {
+                        arr.map((item,index)=>{
+                            return <Welcome key={index} arr={item} />
+                        })
+                    }
+                </div>
+
+            )
+        }
+    }
+    // 定义内部组件
+    function Welcome(props) {
+        return <h1>Welcome {props.arr}</h1>
+    }
+    // 定义数据
+    let arr = ["张三","李四","王五"];
+    // 渲染
+    ReactDOM.render(<App arr={arr} />,document.getElementById("example") )
+</script>
+
+</body>
+</html>

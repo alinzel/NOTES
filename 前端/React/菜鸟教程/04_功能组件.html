@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>菜鸟教程 React 实例</title>
+<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+<h1>组件：将功能模块封装为方法，可以是function 也可以是类</h1>
+<h2 style="color:red">return 要是分行的话用()包裹起来，要不就全部写在一行 相邻的元素标签应该被包裹在一个元素中</h2>
+<div id="fun"></div>
+<script type="text/babel">
+// 复合组件-函数式
+function Info(props){
+    {/* return 要是分行的话用()包裹起来，要不就全部写在一行 相邻的元素标签应该被包裹在一个元素中*/}
+    return <div> <h1>姓名：{props.name}</h1> <h2>性别：{props.sex}</h2> </div>
+
+}
+
+function Interst(props){
+    return <h1>兴趣：{props.insterst}</h1>
+}
+
+// 复合app,使用封装好的组件
+function ZuHe(){
+    return(
+        <div>
+            {/* 调用Info */}
+            <Info name="Arale"/>
+            <Interst insterst="编程"/>
+        </div>
+        )
+}
+
+ReactDOM.render(
+    <ZuHe />,
+    document.getElementById("fun")
+)
+
+
+</script>
+
+</body>
+</html>

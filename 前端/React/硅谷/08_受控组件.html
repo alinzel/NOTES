@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <!-- 引入react依赖 -->
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>  <!-- react核心库 -->
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script> <!-- 提供与dom相关功能 -->
+    <!--生产环境不建议使用-->
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+
+</head>
+<body>
+<div id="example"></div>
+
+<script type="text/babel">
+    class App extends React.Component{
+        constructor(props){
+            super(props);
+            this.state = {
+                "msg": "哈哈哈"
+            };
+            this.handlechange = this.handlechange.bind(this)
+        }
+        handlechange(event){
+            let msg = event.target.value;
+            this.setState({msg})
+        }
+        render(){
+            let {msg} = this.state;
+            console.log(msg)
+            return(
+                <form >
+                    <input onChange={this.handlechange} ref="msg" value={msg} />
+                    <p>{msg}</p>
+                </form>
+            )
+        }
+    }
+
+    // 渲染组件
+    ReactDOM.render(<App />,document.getElementById("example") )
+</script>
+
+</body>
+</html>

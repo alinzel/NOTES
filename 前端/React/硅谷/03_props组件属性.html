@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <!-- 引入react依赖 -->
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>  <!-- react核心库 -->
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script> <!-- 提供与dom相关功能 -->
+    <script src="https://cdn.bootcss.com/prop-types/15.7.2/prop-types.js"></script>
+    <!--生产环境不建议使用-->
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+
+</head>
+<body>
+<div id="example"></div>
+<div id="example1"></div>
+<div id="example2"></div>
+<script type="text/babel">
+   // props的使用-从组件的外部向组件内部传递数据
+    class Person extends React.Component{
+        render(){
+            return(
+                <ul>
+                    <li>姓名：{this.props.name}</li>
+                    <li>年龄：{this.props.age}</li>
+                    <li>性别：{this.props.sex}</li>
+                </ul>
+            )
+        }
+    }
+    // 定义默认属性
+    Person.defaultProps = {
+        sex:"默认的属性值女"
+    };
+    // 设置必传参数和传参类型
+    Person.propTypes = {
+       name : PropTypes.string.isRequired,
+       age : PropTypes.number.isRequired
+   };
+    // 定义数据
+    let person = {name:"Arale",sex:"woman",age:25};
+    // 渲染数据
+    ReactDOM.render(<Person {...person}/>, document.getElementById("example"));
+    ReactDOM.render(<Person name={person.name} age={person.age} />, document.getElementById("example1"));
+    ReactDOM.render(<Person name={person.name}  />, document.getElementById("example2"));
+
+</script>
+
+</body>
+</html>

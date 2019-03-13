@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <!-- 引入react依赖 -->
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>  <!-- react核心库 -->
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script> <!-- 提供与dom相关功能 -->
+    <!--生产环境不建议使用-->
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+<div id="example"></div>
+<div id="example1"></div>
+<script type="text/babel">
+    // 工厂函数（无状态）创建组件，一般简单的组件推荐使用
+    function FunComponent() {
+        return <div>
+            <ul>
+                <li>工厂函数创建的组件，return一个虚拟DOM对象</li>
+                <li>a</li>
+                <li>b</li>
+                <li>c</li>
+            </ul>
+        </div>
+    }
+    ReactDOM.render(
+        <FunComponent />,
+        document.getElementById("example")
+    );
+    // es6 class定义组件，复杂组件，推荐使用
+    class ClassComponent extends React.Component{
+        render(){
+            return <div>
+                <p>es6 class定义组件</p>
+            </div>
+        }
+    }
+    ReactDOM.render(
+        <ClassComponent />,
+        document.getElementById("example1")
+    );
+</script>
+
+</body>
+</html>

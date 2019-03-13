@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>菜鸟教程 React 实例</title>
+<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+
+<div id="example"></div>
+<div id="example1"></div>
+<div id="example2" style="color:red">
+    在父组件中设置 state， 并通过在子组件上使用 props 将其传递到子组件上。在 render 函数中, 我们设置 name 和 site 来获取父组件传递过来的数据。
+</div>
+<div id="example3"></div>
+<script type="text/babel">
+class HelloMessage extends React.Component {
+  render() {
+    return (
+      <h1>Hello, {this.props.name}</h1>
+    );
+  }
+}
+
+// 默认的props
+HelloMessage.defaultProps = {
+  name: 'defaultProps设置默认值,调用组件时候，不传参默认为此默认值，传参为新的参数值'
+};
+
+const element = <HelloMessage />;
+const element1 = <HelloMessage name="传入的参数值"/>
+
+ReactDOM.render(
+  element,
+  document.getElementById('example')
+);
+ReactDOM.render(
+  element1,
+  document.getElementById('example1')
+);
+
+// state 和 props
+class WebSite extends React.Component {
+  constructor() {
+      super();
+
+      this.state = {
+        name: "菜鸟教程",
+        site: "https://www.runoob.com"
+      }
+    }
+
+  render() {
+    return (
+      <div>
+        <Name name={this.state.name} />
+        <Link site={this.state.site} />
+      </div>
+    );
+  }
+}
+
+
+
+class Name extends React.Component {
+  render() {
+    return (
+      <h1>{this.props.name}</h1>
+    );
+  }
+}
+
+class Link extends React.Component {
+  render() {
+    return (
+      <a href={this.props.site}>
+        {this.props.site}
+      </a>
+    );
+  }
+}
+
+ReactDOM.render(
+  <WebSite />,
+  document.getElementById('example3')
+);
+</script>
+
+</body>
+</html>

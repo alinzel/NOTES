@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 引入react依赖 -->
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>  <!-- react核心库 -->
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script> <!-- 提供与dom相关功能 -->
+    <!--生产环境不建议使用-->
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <!--axios请求依赖-->
+    <script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+    <!--fetch请求依赖-->
+    <script src="https://cdn.bootcss.com/fetch/3.0.0/fetch.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+    class App extends React.Component{
+        constructor(props){
+            super(props);
+            // 定义数据的初始状态
+            this.state = {
+                attr:{
+                    cn_name:null,
+                    en_name:null,
+                }
+            }
+        }
+        // 发送ajax请求
+        componentDidMount(){
+            let url = "http://shuyantech.com/api/cndbpedia/avpair?q=%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6";
+            // axios方式
+            // axios.get(url)
+            //     .then(
+            //         (response)=>{
+            //             let data = response.data.ret;
+            //             // 更新数据状态
+            //             this.setState({
+            //                 attr:{
+            //                     cn_name:data[0][1],
+            //                     en_name: data[1][1]
+            //                 }
+            //             })
+            //         }
+            //     )
+            //     .catch(
+            //         (error)=>{
+            //             console.log(error)
+            //         }
+            //     )
+            // fetch方式
+            fetch(url)
+                // 返回response
+                .then((response)=> {return response.json()})
+                // 获取数据
+                .then((data)=> {
+                    data = data.ret;
+                    // 更新数据状态
+                    this.setState({
+                        attr:{
+                            cn_name:data[0][1],
+                            en_name: data[1][1]
+                        }
+                    })
+                })
+                // 捕获异常
+                .catch((e)=> {console.log(e)})
+        }
+        render(){
+            let {attr} = this.state;
+            // 根据数据状态显示不同结果
+            if(!attr){
+                return <h2>正在请求CNdbpedia数据，请稍后...</h2>
+            }else{
+                return(
+                    <div>
+                        <p>中文名：{attr.cn_name}</p>
+                        <p>英文名：{attr.en_name}</p>
+                    </div>
+                )
+            }
+        }
+    }
+
+    ReactDOM.render(
+        <App />,
+        document.getElementById("root")
+    )
+</script>
+</body>
+</html>
