@@ -110,11 +110,75 @@ else:
     # scheme:默认的协议，假如传入的连接没带协议，会采取这个默认的协议
     # allow_fragments:是否忽略锚点部分，值为布尔类型
 # urlunparse:根据参数，生成链接，参数为可迭代对象，且长度为6
+# urlsplit: 与urlparse一样，参数也形同解析url,分成五段，将params与path部分合并
+  # urlsplit(url, scheme,allow_fragments)
+# urlunsplit: 参数为可迭代对象，且长度为5
+# urljoin:生成链接，效果同urlunparse和urlunsplit，但此方法不需要长度
+  # urljoin(base_url,str) 将两个参数合并对base_url的协议、域名、路径进行补充，base_url其他三个部分则不起作用
+# urlencode:将字典对象序列化成符合url参数格式的字符串,一般往url传参中用
+# parse_qs:将url中的参数转成字典
+# parse_qsl:将url中的参数转化为元组组成的列表
+# quote:将数据转化为url格式的编码，一般参数为中文的时候使用
+# unquote:将url格式的编码进行解码
 
 from urllib import parse
 res = parse.urlparse("http:www.baidu.com/index.html;user?id=5#comment")
 # 返回结果为元组，res[0],res.scheme
 print(res, res[0], res.scheme)  # ParseResult(scheme='http', netloc='', path='www.baidu.com/index.html', params='user', query='id=5', fragment='comment')
+
 data = ["http", "www.baidu.com", "index.html", "user", "d=5", "comment"]
 res = parse.urlunparse(data)
-print(res)
+print(res)  # http://www.baidu.com/index.html;user?d=5#comment
+
+res = parse.urlsplit("http:www.baidu.com/index.html;user?id=5#comment")
+print(res)  # SplitResult(scheme='http', netloc='', path='www.baidu.com/index.html;user', query='id=5', fragment='comment')
+
+data = ["http", "www.baidu.com", "index.html", "d=5", "comment"]
+res = parse.urlunsplit(data)
+print(res)  # http://www.baidu.com/index.html?d=5#comment
+
+res = parse.urljoin("http://www.baidu.com", "index.html")
+print(res)  # http://www.baidu.com/index.html ,注意合并的规则
+
+data= {
+    "name":"bob",
+    "age":18
+}
+res = parse.urlencode(data, encoding="utf8")
+print(res)  # name=bob&age=18
+
+res = parse.parse_qs("http:www.baidu.com/index.html;user?id=5&name=3")
+print(res)  # {'user?id': ['5'], 'name': ['3#comment']}
+
+res = parse.parse_qsl("http:www.baidu.com/index.html;user?id=5&name=3")
+print(res)  # [('user?id', '5'), ('name', '3')]
+
+q= "张三"
+res = "http:www.baidu.com/index.html?q=%s " % parse.quote(q)  # 编码
+print(res)  # http:www.baidu.com/index.html?q=%E5%BC%A0%E4%B8%89
+res = parse.unquote(res)  # 解码
+print(res)  # http:www.baidu.com/index.html?q=张三
+
+
+# robotparse:分析robot协议
+  # robots.txt:网站爬虫协议，全称网络爬虫排除标准，一般存放于网站的根目录下
+    # 返回的内容：
+      # user-agent:设置可以爬取网站的爬虫名称
+      # disallow:设置哪些路径不能爬取
+      # allow:设置哪些路径可以爬取
+  # RobotFileParser(url="") # 根据网站的robot协议来判断爬虫是否有权限爬取
+    # set_url():设置robots.txt文件的连接
+    # read():读取robots.txt文件并分析,无返回值，必须调用
+    # parse():解析robots.txt文件
+    # can_fetch(User-agent, url)：返回值为布尔类型，判断此user-agent是否可以爬取此url
+    # mtime():返回值为上次抓取分析robots的时间
+    # modified():将当前时间设置为上次抓取的时间
+
+from urllib import robotparser
+
+rp = robotparser.RobotFileParser()  # 实例化分析类
+rp.set_url("https://www.jd.com/robots.txt")  # 添加robots地址
+rp.read()  # 读取robot协议
+print(rp.can_fetch("*", "https://www.jd.com/")) # 判断当前爬虫是否可以爬取， True
+print(rp.mtime())  # 上次抓取的时间 1553685029.0578604
+print(rp.modified())  # 设置抓取的时间 none
