@@ -1,0 +1,12 @@
+1. 查询姓李的老师的个数
+   SELECT count(*) from app_teacher WHERE T_name LIKE "李%"
+2. 查询每门课程被选修的学生数
+   SELECT S_course_id, count(S_student_id) from app_score GROUP BY S_course_id
+3. 检索编号为4的课程分数小于60，按分数降序排列的学生学号
+   SELECT S_student_id, S_score from app_score   WHERE S_course_id=4 and S_score < 60 ORDER BY S_score desc
+4. 查询至少学过学号为“1”同学一门课程的其他同学学号姓名-子查询
+   select S_num ,S_name from app_student where S_num in (select S_student_id from app_score where S_course_id in(SELECT S_course_id from app_score where S_student_id = 1)) and S_num != 1
+5. 查询“2”课程比“4”课程成绩高的所有学生的学号-自关联
+   Select sc1.S_student_id from app_score as sc1 inner join app_score as sc2 on sc1.S_student_id=sc2.S_student_id and sc1 .S_course_id=002 and sc2.S_course_id=004 and sc1.S_score>sc2.S_score
+
+表结构见 NOTES\python\django_form_test\app\models.py 或者当前目录下的sql备份
