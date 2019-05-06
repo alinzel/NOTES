@@ -68,7 +68,40 @@
             { data: 'office' },
             { data: 'extn' }
         ];
-        MountTable("#editable", "./data.json", columns)
+        var data = [
+            {
+                "salary": "111",
+                "name": "sssss",
+                "position": "dddddd",
+                "office": "1",
+                "extn": "eet"
+            },
+            {
+                "salary": "222",
+                "name": "sssss",
+                "position": "dddddd",
+                "office": "1",
+                "extn": "eet"
+            },
+            {
+                "salary": "333",
+                "name": "sssss",
+                "position": "dddddd",
+                "office": "1",
+                "extn": "eet"
+            },
+            {
+                "salary": "444",
+                "name": "sssss",
+                "position": "dddddd",
+                "office": "1",
+                "extn": "eet"
+            }
+        ]
+        $("#editable").dataTable({
+            data:data,
+            columns:columns
+        })
         MountTable("#editable1", "./data.json", columns)
 
     });
