@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link href="https://cdn.bootcss.com/select2/4.0.7-rc.0/css/select2.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/select2/4.0.7-rc.0/js/select2.full.min.js"></script>
+</head>
+<body>
+<label for="">
+    <select name="" id="inDistrict" style="width: 500px">
+
+    </select>
+</label>
+</body>
+<script>
+    $("#inDistrict").select2({
+        placeholder: 'Select an option',
+        allowClear:true,
+        data: [
+            {
+                "text": "Group 1",
+                "children" : [
+                    {
+                        "id": 1,
+                        "text": "Option 1.1"
+                    },
+                    {
+                        "id": 2,
+                        "text": "Option 1.2"
+                    }
+                ]
+            },
+            {
+                "text": "Group 2",
+                "children" : [
+                    {
+                        "id": 3,
+                        "text": "Option 2.1"
+                    },
+                    {
+                        "id": 4,
+                        "text": "Option 2.2"
+                    }
+                ]
+            }
+        ],
+        "pagination": {
+            "more": true
+        }
+
+    })
+
+</script>
+</html>
