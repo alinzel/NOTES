@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>提示已点赞 之后消失</title>
+<link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+   <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+   <style type="text/css">
+      #dianji{text-align: center ;font-size: 30px;color:#000;display: block;cursor: pointer}
+
+
+      #disappare{border:2px solid #ccc;border-radius: 5px;background: #fff;font-size: 20px;text-align: center;
+        position: fixed;top:50%;left: 48%;
+      }
+      #disappare span{
+         padding: 10px;
+      }
+/*弹框本身(大)*/ 
+.my-modal-alert .boxBodyBig{
+    width:496px;
+    height: 418px;
+}
+/*弹框本身(小)*/ 
+.my-modal-alert .boxBodySmall{
+    width:412px;
+    height: 418px;
+}
+/*弹框头*/
+.my-modal-alert .boxHeader{
+    background-color: #f6f6f6;
+    border-bottom: #e5e5e5 1px;
+    height: 48px;
+} 
+/*弹框标题*/ 
+.my-modal-alert .boxTitle{
+    background-color: #f6f6f6;
+    color:#333333;
+    font-family:"SimHei";
+    font-size: 16px;
+}
+/*弹框头部分右侧关闭按钮*/
+.my-modal-alert .boxClose{
+    
+}
+.my-modal-alert .boxClose:hover{
+    color: #ff7800;
+}
+/*弹框按钮的父级元素块*/
+.my-modal-alert .boxFooter{
+    margin: auto;
+    text-align: center;
+    padding:24px 15px 24px 15px;
+    margin:0px 15px 0px 15px;
+}
+/*弹框按钮*/
+.my-modal-alert .boxButton{
+    font-family:"SimHei";
+    background-color:#ff7800;
+    width: 70px;
+    height: 30px;
+    color:white;
+    text-align:center;
+    line-height: 1;
+}
+
+/*已下为选用*/
+/*弹框主题label框*/
+.my-modal-alert .boxLabel{
+    width:80px;
+    font-size: 14px; 
+    font-family:'SimHei';
+    color: #999999;
+    
+}
+/*文本框*/
+.my-modal-alert .boxInput{
+    width:176px;
+    font-size: 14px;
+    color: #333333;
+}
+/*纯文本*/
+.my-modal-alert .boxText{
+    color:#ff7800;
+    font-family:'SimHei';
+    font-size: 12px;
+}
+.my-modal-alert .boxTextarea{
+    font-size: 12px;
+}
+
+.my-modal-alert .modal-body{
+    width: 400px;
+    height: 100px;
+    text-align: center;
+}
+.my-modal-alert .modal_message{
+    margin-top: 20px;
+    
+}
+   </style>
+</head>
+<body>
+<div id="content">
+   <a id="dianji">点击</a>
+   <div id="disappare" style="display:none;">
+      <span>已点赞</span>
+   </div>
+</div>
+<div class="box">
+    <h2>剩余时间：<span class="clock">10</span>秒</h2>
+</div>
+<button onclick="showModal()">点击弹出模态框</button>
+        
+        <div class='modal my-modal-alert' id='my-modal-alert'>
+            <div class='modal-dialog boxBodySmall'>
+                <div class='modal-content'>
+                    <div class='modal-body' id='modal-body-alert'>
+                        <div id='modal_message'>js弹框自动消失案例</div>
+                        <span id='num'></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<script type="text/javascript">
+   $(function(){
+      $("#dianji").click(function(){
+         $("#disappare").show().delay(3000).hide(50);
+      });
+   })
+var t = 10;
+	var time = document.getElementsByClassName("clock")[0];
+ 
+	function fun() {
+		t--;
+		time.innerHTML = t;
+		if(t <= 0) {
+			// location.href = "https://www.baidu.com";
+			clearInterval(inter);
+		}
+	}
+	var inter = setInterval("fun()", 1000);
+var clearFlag = 0;
+            var count = 3;//设置3秒后自动消失
+            var showModal = function(){
+                $("#my-modal-alert").toggle();//显示模态框
+                
+                clearFlag = self.setInterval("autoClose()",1000);//每过一秒调用一次autoClose方法
+            }
+            
+            var autoClose = function(){
+                if(count>0){
+                    $("#num").html(count + "秒后窗口将自动关闭");
+                    count--;
+                }else if(count<=0){
+                    window.clearInterval(clearFlag); 
+                    $("#num").html("");
+                    $("#my-modal-alert").fadeOut("slow");
+                    count = 3;
+                    $("#my-modal-alert").toggle();
+                }
+            }
+</script>
+</body>
+</html>
