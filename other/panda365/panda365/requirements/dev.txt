@@ -2,5 +2,5 @@
 flask-shell-ipython==0.2.2
 flask-debugtoolbar==0.10.1
 pdbpp==0.9.1
-ipython==6.1.0
+ipython==7.16.3
 pytest-watch==4.1.0
